@@ -118,16 +118,27 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
   });
 });
 
-// Intersection Observer for fade-in animations
+// Intersection Observer for scroll-triggered animations
 var observer = new IntersectionObserver(function (entries) {
   entries.forEach(function (entry) {
     if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
+      // Stagger game cards
+      var delay = entry.target.dataset.delay || 0;
+      setTimeout(function () {
+        entry.target.classList.add('visible');
+      }, delay);
       observer.unobserve(entry.target);
     }
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.fade-in').forEach(function (el) {
+// Observe all animated elements
+document.querySelectorAll('.fade-in, .featured-card, .section-header').forEach(function (el) {
   observer.observe(el);
+});
+
+// Stagger game cards with delay
+document.querySelectorAll('.game-card').forEach(function (card, i) {
+  card.dataset.delay = i * 100; // 100ms stagger between cards
+  observer.observe(card);
 });
