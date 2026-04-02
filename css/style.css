@@ -193,8 +193,8 @@ ul { list-style: none; }
 
 /* ============ FEATURED GAME ============ */
 .featured-section {
-  padding: 32px 0; background: var(--bg-primary);
-  border-bottom: 1px solid var(--border);
+  padding: 0 0 24px; background: var(--bg-secondary);
+  border-bottom: none;
 }
 .featured-card {
   background: linear-gradient(135deg, #6c3ce0, #4f46e5);
@@ -226,8 +226,8 @@ ul { list-style: none; }
   gap: 24px; padding: 40px; position: relative;
   background: rgba(255,255,255,0.05);
 }
-.featured-visual .featured-stores { display: flex; gap: 10px; }
-.featured-visual .featured-stores .store-badge img { height: 40px; }
+.featured-visual .featured-stores { display: flex; gap: 12px; justify-content: center; }
+.featured-visual .featured-stores .store-badge img { height: 44px; border-radius: 10px; }
 .featured-visual img {
   width: 200px; height: 200px; border-radius: 40px;
   box-shadow:
@@ -298,8 +298,14 @@ section { padding: 56px 0; }
   max-width: 600px; margin: 8px auto 0;
 }
 
+/* ============ GAMES HEADER ============ */
+.games-header-section {
+  padding: 48px 0 24px; background: var(--bg-secondary);
+  border-bottom: none;
+}
+
 /* ============ GAMES GRID ============ */
-.games-section { background: var(--bg-secondary); }
+.games-section { background: var(--bg-secondary); padding-top: 24px; }
 .games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
 
 .game-card {
