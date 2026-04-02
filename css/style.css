@@ -209,7 +209,19 @@ ul { list-style: none; }
 }
 .featured-visual img {
   width: 200px; height: 200px; border-radius: 40px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  box-shadow:
+    0 6px 12px rgba(0,0,0,0.2),
+    0 20px 50px rgba(0,0,0,0.35),
+    0 -3px 8px rgba(255,255,255,0.3) inset;
+  transform: perspective(600px) rotateY(-4deg) rotateX(2deg);
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s ease;
+}
+.featured-visual img:hover {
+  transform: perspective(600px) rotateY(0deg) rotateX(0deg) scale(1.05);
+  box-shadow:
+    0 10px 20px rgba(0,0,0,0.25),
+    0 30px 60px rgba(0,0,0,0.3),
+    0 -3px 8px rgba(255,255,255,0.4) inset;
 }
 .featured-screenshots {
   position: absolute; bottom: 20px; right: 20px; left: 20px;
@@ -278,10 +290,20 @@ section { padding: 56px 0; }
 }
 .game-card-image img {
   width: 100px; height: 100px; border-radius: 22px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-  transition: transform var(--transition);
+  box-shadow:
+    0 4px 8px rgba(0,0,0,0.12),
+    0 12px 28px rgba(0,0,0,0.18),
+    0 -2px 6px rgba(255,255,255,0.4) inset;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+  transform: perspective(500px) rotateX(2deg) rotateY(-2deg);
 }
-.game-card:hover .game-card-image img { transform: scale(1.08); }
+.game-card:hover .game-card-image img {
+  transform: perspective(500px) rotateX(0deg) rotateY(0deg) scale(1.08) translateY(-4px);
+  box-shadow:
+    0 8px 16px rgba(0,0,0,0.15),
+    0 20px 40px rgba(108,60,224,0.2),
+    0 -2px 6px rgba(255,255,255,0.5) inset;
+}
 .game-card-badge {
   position: absolute; top: 12px; left: 12px;
   background: var(--accent-primary); color: white;
