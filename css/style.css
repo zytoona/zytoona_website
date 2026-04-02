@@ -220,10 +220,12 @@ ul { list-style: none; }
 .featured-stores { display: flex; gap: 12px; }
 .featured-stores .store-badge img { height: 44px; }
 .featured-visual {
-  display: flex; align-items: center; justify-content: center;
-  padding: 40px; position: relative;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 24px; padding: 40px; position: relative;
   background: rgba(255,255,255,0.05);
 }
+.featured-visual .featured-stores { display: flex; gap: 10px; }
+.featured-visual .featured-stores .store-badge img { height: 40px; }
 .featured-visual img {
   width: 200px; height: 200px; border-radius: 40px;
   box-shadow:
@@ -405,7 +407,7 @@ section { padding: 56px 0; }
   background: var(--text-primary);
   color: rgba(255,255,255,0.7);
 }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; margin-bottom: 40px; }
 .footer-brand .nav-logo span { color: white; }
 .footer-brand p { color: rgba(255,255,255,0.5); margin-top: 12px; font-size: 0.9rem; line-height: 1.7; }
 .footer-col h4 {
