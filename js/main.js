@@ -22,31 +22,57 @@ document.addEventListener('scroll', function () {
   }
 });
 
-// Logo scroll effect: hero brand shrinks on scroll, then appears in navbar
+// Flying logo: hero brand smoothly moves into navbar on scroll
 (function () {
   var heroBrand = document.querySelector('.hero-brand');
-  var navbar = document.querySelector('.navbar');
-  if (!heroBrand || !navbar) return;
+  var placeholder = document.querySelector('.nav-logo-placeholder');
+  if (!heroBrand || !placeholder) return;
 
+  // Cache the hero brand's natural position (before any scroll manipulation)
+  var startRect = heroBrand.getBoundingClientRect();
+  var startTop = startRect.top + window.scrollY;
+  var startLeft = startRect.left + startRect.width / 2; // center x
   var startHeight = 120;
-  var endHeight = 50;
-  var scrollRange = 150; // px of scroll over which shrink happens
+  var endHeight = 38;
+  var isDocked = false;
+
+  function getTargetPos() {
+    var r = placeholder.getBoundingClientRect();
+    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+  }
 
   var ticking = false;
   window.addEventListener('scroll', function () {
     if (!ticking) {
       requestAnimationFrame(function () {
         var scrollY = window.scrollY;
-        var progress = Math.min(scrollY / scrollRange, 1);
-        var newHeight = startHeight - (startHeight - endHeight) * progress;
-        heroBrand.style.height = newHeight + 'px';
+        var heroBottom = startTop + startHeight - scrollY;
+        var navbarH = 62;
 
-        // Show nav logo once hero brand is near top of viewport
-        var rect = heroBrand.getBoundingClientRect();
-        if (rect.bottom < 60) {
-          navbar.classList.add('logo-visible');
-        } else {
-          navbar.classList.remove('logo-visible');
+        // Phase 1: shrink in place
+        if (heroBottom > navbarH + 20) {
+          if (isDocked) {
+            heroBrand.classList.remove('is-docked');
+            heroBrand.style.cssText = '';
+            isDocked = false;
+          }
+          // Shrink from 120 to ~70 over first 100px scroll
+          var shrinkProgress = Math.min(scrollY / 100, 1);
+          var h = startHeight - (startHeight - 70) * shrinkProgress;
+          heroBrand.style.height = h + 'px';
+        }
+        // Phase 2: dock to navbar — fly to corner
+        else {
+          if (!isDocked) {
+            isDocked = true;
+            heroBrand.classList.add('is-docked');
+          }
+          var target = getTargetPos();
+          heroBrand.style.height = endHeight + 'px';
+          heroBrand.style.top = (target.y - endHeight / 2) + 'px';
+          heroBrand.style.left = (target.x - endHeight / 2) + 'px';
+          heroBrand.style.borderRadius = '10px';
+          heroBrand.style.transition = 'top 0.3s ease, left 0.3s ease, height 0.2s ease';
         }
         ticking = false;
       });
