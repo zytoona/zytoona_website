@@ -22,6 +22,25 @@ document.addEventListener('scroll', function () {
   }
 });
 
+// Logo scroll effect: hero brand fades into navbar
+(function () {
+  var heroBrand = document.querySelector('.hero-brand');
+  var navbar = document.querySelector('.navbar');
+  if (!heroBrand || !navbar) return;
+
+  var logoObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        navbar.classList.remove('logo-visible');
+      } else {
+        navbar.classList.add('logo-visible');
+      }
+    });
+  }, { threshold: 0, rootMargin: '-60px 0px 0px 0px' });
+
+  logoObserver.observe(heroBrand);
+})();
+
 // Mobile nav toggle
 var navToggle = document.getElementById('navToggle');
 var navLinks = document.getElementById('navLinks');
