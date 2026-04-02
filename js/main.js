@@ -1,6 +1,20 @@
+// Platform detection for smart download buttons
+(function () {
+  var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  document.querySelectorAll('.btn-download').forEach(function (btn) {
+    var url = isIOS ? btn.dataset.ios : btn.dataset.android;
+    if (url) {
+      btn.href = url;
+      btn.target = '_blank';
+      btn.rel = 'noopener';
+    }
+  });
+})();
+
 // Navbar scroll effect
-document.addEventListener('scroll', () => {
-  const navbar = document.querySelector('nav');
+document.addEventListener('scroll', function () {
+  var navbar = document.querySelector('nav');
   if (window.scrollY > 50) {
     navbar.classList.add('scrolled');
   } else {
@@ -9,11 +23,11 @@ document.addEventListener('scroll', () => {
 });
 
 // Mobile nav toggle
-const navToggle = document.getElementById('navToggle');
-const navLinks = document.getElementById('navLinks');
+var navToggle = document.getElementById('navToggle');
+var navLinks = document.getElementById('navLinks');
 
 if (navToggle) {
-  navToggle.addEventListener('click', (e) => {
+  navToggle.addEventListener('click', function (e) {
     e.preventDefault();
     navToggle.classList.toggle('active');
     navLinks.classList.toggle('active');
@@ -22,68 +36,39 @@ if (navToggle) {
 
 // Close mobile menu when a nav link is clicked
 if (navLinks) {
-  const links = navLinks.querySelectorAll('a');
-  links.forEach(link => {
-    link.addEventListener('click', () => {
+  var links = navLinks.querySelectorAll('a');
+  links.forEach(function (link) {
+    link.addEventListener('click', function () {
       navToggle.classList.remove('active');
       navLinks.classList.remove('active');
     });
   });
 }
 
-// Scroll-to-top button
-const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+  anchor.addEventListener('click', function (e) {
+    var href = this.getAttribute('href');
+    if (href === '#') return;
 
-if (scrollToTopBtn) {
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 500) {
-      scrollToTopBtn.style.display = 'block';
-    } else {
-      scrollToTopBtn.style.display = 'none';
+    var target = document.querySelector(href);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
-
-  scrollToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
-}
+});
 
 // Intersection Observer for fade-in animations
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
+var observer = new IntersectionObserver(function (entries) {
+  entries.forEach(function (entry) {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
       observer.unobserve(entry.target);
     }
   });
-}, observerOptions);
+}, { threshold: 0.1 });
 
-// Observe all elements with fade-in class
-document.querySelectorAll('.fade-in').forEach(element => {
-  observer.observe(element);
-});
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    const href = this.getAttribute('href');
-    if (href === '#') return;
-    
-    const target = document.querySelector(href);
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  });
+document.querySelectorAll('.fade-in').forEach(function (el) {
+  observer.observe(el);
 });
