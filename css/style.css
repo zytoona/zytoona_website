@@ -110,10 +110,6 @@ ul { list-style: none; }
 .hero-brand {
   height: 80px; width: auto;
 }
-.hero-brand-text {
-  font-size: clamp(1.4rem, 3vw, 1.8rem); font-weight: 700;
-  color: #7c6532;
-}
 
 .hero h1 {
   font-size: clamp(1.7rem, 5vw, 2.8rem); font-weight: 900;
@@ -172,7 +168,7 @@ section { padding: 40px 0; }
 }
 .featured-label-top {
   font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.6); margin-bottom: 12px; text-align: center;
+  color: #f2a51a; margin-bottom: 12px; text-align: center;
 }
 .featured-label {
   font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
