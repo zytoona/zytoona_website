@@ -22,63 +22,23 @@ document.addEventListener('scroll', function () {
   }
 });
 
-// Flying logo: hero brand smoothly moves into navbar on scroll
+// Navbar logo: fade in when hero brand scrolls out of view
 (function () {
   var heroBrand = document.querySelector('.hero-brand');
-  var placeholder = document.querySelector('.nav-logo-placeholder');
-  if (!heroBrand || !placeholder) return;
+  var navbar = document.querySelector('.navbar');
+  if (!heroBrand || !navbar) return;
 
-  // Cache the hero brand's natural position (before any scroll manipulation)
-  var startRect = heroBrand.getBoundingClientRect();
-  var startTop = startRect.top + window.scrollY;
-  var startLeft = startRect.left + startRect.width / 2; // center x
-  var startHeight = 120;
-  var endHeight = 38;
-  var isDocked = false;
+  var logoObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        navbar.classList.remove('logo-visible');
+      } else {
+        navbar.classList.add('logo-visible');
+      }
+    });
+  }, { threshold: 0, rootMargin: '-60px 0px 0px 0px' });
 
-  function getTargetPos() {
-    var r = placeholder.getBoundingClientRect();
-    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
-  }
-
-  var ticking = false;
-  window.addEventListener('scroll', function () {
-    if (!ticking) {
-      requestAnimationFrame(function () {
-        var scrollY = window.scrollY;
-        var heroBottom = startTop + startHeight - scrollY;
-        var navbarH = 62;
-
-        // Phase 1: shrink in place
-        if (heroBottom > navbarH + 20) {
-          if (isDocked) {
-            heroBrand.classList.remove('is-docked');
-            heroBrand.style.cssText = '';
-            isDocked = false;
-          }
-          // Shrink from 120 to ~70 over first 100px scroll
-          var shrinkProgress = Math.min(scrollY / 100, 1);
-          var h = startHeight - (startHeight - 70) * shrinkProgress;
-          heroBrand.style.height = h + 'px';
-        }
-        // Phase 2: dock to navbar — fly to corner
-        else {
-          if (!isDocked) {
-            isDocked = true;
-            heroBrand.classList.add('is-docked');
-          }
-          var target = getTargetPos();
-          heroBrand.style.height = endHeight + 'px';
-          heroBrand.style.top = (target.y - endHeight / 2) + 'px';
-          heroBrand.style.left = (target.x - endHeight / 2) + 'px';
-          heroBrand.style.borderRadius = '10px';
-          heroBrand.style.transition = 'top 0.3s ease, left 0.3s ease, height 0.2s ease';
-        }
-        ticking = false;
-      });
-      ticking = true;
-    }
-  });
+  logoObserver.observe(heroBrand);
 })();
 
 // Mobile nav toggle
@@ -122,7 +82,6 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
 var observer = new IntersectionObserver(function (entries) {
   entries.forEach(function (entry) {
     if (entry.isIntersecting) {
-      // Stagger game cards
       var delay = entry.target.dataset.delay || 0;
       setTimeout(function () {
         entry.target.classList.add('visible');
@@ -130,15 +89,27 @@ var observer = new IntersectionObserver(function (entries) {
       observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0.05, rootMargin: '0px 0px 80px 0px' });
 
 // Observe all animated elements
 document.querySelectorAll('.fade-in, .featured-card, .section-header').forEach(function (el) {
   observer.observe(el);
 });
 
-// Stagger game cards with delay
+// Stagger game cards — trigger earlier with generous rootMargin
+var cardObserver = new IntersectionObserver(function (entries) {
+  entries.forEach(function (entry) {
+    if (entry.isIntersecting) {
+      var delay = entry.target.dataset.delay || 0;
+      setTimeout(function () {
+        entry.target.classList.add('visible');
+      }, delay);
+      cardObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0, rootMargin: '0px 0px 150px 0px' });
+
 document.querySelectorAll('.game-card').forEach(function (card, i) {
-  card.dataset.delay = i * 100; // 100ms stagger between cards
-  observer.observe(card);
+  card.dataset.delay = i * 80;
+  cardObserver.observe(card);
 });
