@@ -97,7 +97,7 @@ ul { list-style: none; }
 
 /* ============ HERO ============ */
 .hero {
-  padding: 100px 20px 40px; text-align: center;
+  padding: 80px 20px 28px; text-align: center;
   position: relative; overflow: hidden;
   background: linear-gradient(180deg, #fff8e8 0%, #fff4d6 40%, #fffaf0 100%);
 }
