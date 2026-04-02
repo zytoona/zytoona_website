@@ -142,29 +142,40 @@ ul { list-style: none; }
 
 /* Hero Stats */
 .hero-stats {
-  display: flex; justify-content: center; gap: 28px; flex-wrap: wrap;
-  margin-bottom: 28px;
+  display: flex; justify-content: center; gap: 20px; flex-wrap: nowrap;
+  margin-bottom: 0;
   animation: fadeInUp 0.6s ease 0.3s both;
 }
 .hero-stat {
-  text-align: center; padding: 16px 24px;
+  text-align: center; padding: 14px 20px;
   background: var(--bg-primary); border-radius: var(--radius-md);
   border: 1px solid var(--border); box-shadow: var(--shadow-sm);
-  min-width: 120px;
+  flex: 1; max-width: 160px;
 }
 .hero-stat .number {
-  font-size: 2rem; font-weight: 900; color: var(--accent-primary);
+  font-size: 1.8rem; font-weight: 900; color: var(--accent-primary);
   line-height: 1.2;
 }
 .hero-stat .label {
-  font-size: 0.8rem; color: var(--text-muted); margin-top: 2px;
+  font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;
   font-weight: 600;
 }
 
-/* Hero Store Buttons */
-.hero-stores {
+/* Download Section */
+.download-section {
+  padding: 40px 0; text-align: center;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+}
+.download-content h2 {
+  font-size: 1.4rem; font-weight: 800; margin-bottom: 8px;
+  color: var(--text-primary);
+}
+.download-content p {
+  font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 20px;
+}
+.download-stores {
   display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
-  animation: fadeInUp 0.6s ease 0.4s both;
 }
 .store-badge {
   display: inline-block; transition: transform var(--transition);
@@ -556,9 +567,10 @@ body.ltr .legal-content ul { padding-right: 0; padding-left: 24px; }
 /* ============ RESPONSIVE ============ */
 @media (max-width: 768px) {
   .games-grid { grid-template-columns: 1fr; }
-  .hero-stats { gap: 12px; }
-  .hero-stat { min-width: 100px; padding: 12px 16px; }
-  .hero-stat .number { font-size: 1.5rem; }
+  .hero-stats { gap: 8px; flex-wrap: nowrap; }
+  .hero-stat { padding: 10px 8px; flex: 1; max-width: none; }
+  .hero-stat .number { font-size: 1.3rem; }
+  .hero-stat .label { font-size: 0.7rem; }
   section { padding: 40px 0; }
   .trust-grid { gap: 24px; }
   .trust-item .value { font-size: 1.5rem; }
