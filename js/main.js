@@ -22,23 +22,37 @@ document.addEventListener('scroll', function () {
   }
 });
 
-// Logo scroll effect: hero brand fades into navbar
+// Logo scroll effect: hero brand shrinks on scroll, then appears in navbar
 (function () {
   var heroBrand = document.querySelector('.hero-brand');
   var navbar = document.querySelector('.navbar');
   if (!heroBrand || !navbar) return;
 
-  var logoObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        navbar.classList.remove('logo-visible');
-      } else {
-        navbar.classList.add('logo-visible');
-      }
-    });
-  }, { threshold: 0, rootMargin: '-60px 0px 0px 0px' });
+  var startHeight = 120;
+  var endHeight = 50;
+  var scrollRange = 150; // px of scroll over which shrink happens
 
-  logoObserver.observe(heroBrand);
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      requestAnimationFrame(function () {
+        var scrollY = window.scrollY;
+        var progress = Math.min(scrollY / scrollRange, 1);
+        var newHeight = startHeight - (startHeight - endHeight) * progress;
+        heroBrand.style.height = newHeight + 'px';
+
+        // Show nav logo once hero brand is near top of viewport
+        var rect = heroBrand.getBoundingClientRect();
+        if (rect.bottom < 60) {
+          navbar.classList.add('logo-visible');
+        } else {
+          navbar.classList.remove('logo-visible');
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
 })();
 
 // Mobile nav toggle

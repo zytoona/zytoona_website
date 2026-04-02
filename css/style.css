@@ -109,7 +109,10 @@ ul { list-style: none; }
 }
 
 .hero-brand {
-  height: 80px; width: auto;
+  height: 120px; width: auto;
+  transform-origin: center center;
+  transition: height 0.05s linear;
+  will-change: height;
 }
 
 .hero h1 {
