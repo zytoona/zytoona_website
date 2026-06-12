@@ -3,17 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contact Zytoona Games - Get in touch with our team. We'd love to hear from you!">
-    <meta name="keywords" content="contact, support, zytoona games, get in touch">
+    <meta name="description" content="تواصل مع فريق زيتونة للألعاب - نسعد بسماع رأيك واقتراحاتك!">
+    <meta name="keywords" content="تواصل, دعم, زيتونة, ألعاب زيتونة, contact, zytoona games">
     <meta name="author" content="Zytoona Games">
-    <meta property="og:title" content="Contact Us | Zytoona Games">
-    <meta property="og:description" content="Get in touch with the Zytoona Games team. Send us a message!">
+    <meta property="og:title" content="تواصل معنا | زيتونة للألعاب">
+    <meta property="og:description" content="تواصل مع فريق زيتونة للألعاب - نسعد بسماع رأيك واقتراحاتك!">
     <meta property="og:type" content="website">
-    <title>Contact Us | Zytoona Games</title>
+    <meta property="og:image" content="https://zytoona.com/images/logo_zytoona.png">
+    <meta property="og:url" content="https://zytoona.com/contact/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="تواصل معنا | زيتونة للألعاب">
+    <meta name="twitter:description" content="تواصل مع فريق زيتونة للألعاب - نسعد بسماع رأيك واقتراحاتك!">
+    <meta name="twitter:image" content="https://zytoona.com/images/logo_zytoona.png">
+    <link rel="canonical" href="https://zytoona.com/contact/">
+    <title>تواصل معنا | زيتونة للألعاب</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6QT3NP9PSZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-6QT3NP9PSZ');
+  </script>
+  <!-- Google AdSense Auto Ads -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2296352381124224"
+       crossorigin="anonymous"></script>
 </head>
 <body dir="rtl">
     <nav class="navbar" id="navbar">
@@ -55,7 +73,11 @@
                 </div>
 
                 <div class="contact-form-wrapper">
-                    <form class="contact-form" id="contactForm">
+                    <form class="contact-form" id="contactForm" action="https://formsubmit.co/zait@zytoona.com" method="POST">
+                        <input type="hidden" name="_subject" value="رسالة جديدة من موقع زيتونة">
+                        <input type="hidden" name="_next" value="https://zytoona.com/contact/?sent=1">
+                        <input type="hidden" name="_captcha" value="true">
+                        <input type="text" name="_honey" style="display:none">
                         <div class="form-group">
                             <label for="name">الاسم</label>
                             <input type="text" id="name" name="name" required>
@@ -73,9 +95,6 @@
                             <textarea id="message" name="message" rows="6" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">إرسال</button>
-                        <div class="form-success" id="formSuccess" style="display:none;">
-                            <p>شكراً لك! تم إرسال رسالتك بنجاح. سنرد عليك قريباً.</p>
-                        </div>
                     </form>
                 </div>
             </div>
@@ -108,9 +127,7 @@
                 <div class="footer-col">
                     <h4>قانوني</h4>
                     <a href="/privacy-policy/">سياسة الخصوصية</a>
-                    <a href="/privacy-policy-uc/">سياسة الخصوصية (UC)</a>
-                    <a href="/data-deletion-wc/">حذف البيانات (WC)</a>
-                    <a href="/data-deletion-uc/">حذف البيانات (UC)</a>
+                    <a href="/data-deletion-wc/">حذف البيانات</a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -129,15 +146,13 @@
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&#8593;</button>
     <script src="/js/main.js"></script>
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formSuccess = document.getElementById('formSuccess');
-            formSuccess.style.display = 'block';
-            this.reset();
-            setTimeout(() => {
-                formSuccess.style.display = 'none';
-            }, 5000);
-        });
+        if (window.location.search.includes('sent=1')) {
+            const msg = document.createElement('div');
+            msg.className = 'form-success';
+            msg.style.display = 'block';
+            msg.innerHTML = '<p>شكراً لك! تم إرسال رسالتك بنجاح. سنرد عليك قريباً.</p>';
+            document.getElementById('contactForm').appendChild(msg);
+        }
     </script>
 </body>
 </html>

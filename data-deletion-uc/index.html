@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <meta name="description" content="طلب حذف البيانات - متقاطعة كراش - العاب زيتونة">
     <meta name="keywords" content="حذف البيانات, متقاطعة كراش, العاب عربية">
     <meta name="author" content="Zytoona Games">
@@ -14,6 +15,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6QT3NP9PSZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-6QT3NP9PSZ');
+  </script>
+
+  <!-- Google AdSense Auto Ads -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2296352381124224"
+       crossorigin="anonymous"></script>
 </head>
 <body>
     <nav class="navbar" id="navbar">
@@ -39,7 +52,11 @@
                 <h1>طلب حذف البيانات للعبة متقاطعة كراش</h1>
                 <p>اذا كنت تريد حذف حسابك وجميع بياناتك الشخصية من لعبة متقاطعة كراش، يرجى ملء النموذج أدناه. سوف نقوم بمعالجة طلبك خلال 48 ساعة كحد أقصى.</p>
 
-                <form class="deletion-form" id="deletionForm">
+                <form class="deletion-form" id="deletionForm" action="https://formsubmit.co/zait@zytoona.com" method="POST">
+                    <input type="hidden" name="_subject" value="طلب حذف بيانات - متقاطعة كراش">
+                    <input type="hidden" name="_next" value="https://zytoona.com/data-deletion-uc/?sent=1">
+                    <input type="hidden" name="_captcha" value="true">
+                    <input type="text" name="_honey" style="display:none">
                     <div class="form-group">
                         <label for="email">البريد الألكتروني</label>
                         <input type="email" id="email" name="email" required>
@@ -49,9 +66,6 @@
                         <input type="text" id="name" name="name" required>
                     </div>
                     <button type="submit" class="btn btn-primary">طلب حذف الحساب</button>
-                    <div class="form-success" id="formSuccess" style="display:none;">
-                        <p>وصلنا طلبك ! سنتواصل معك خلال 48 ساعة</p>
-                    </div>
                 </form>
 
                 <div class="deletion-note">
@@ -87,10 +101,7 @@
                 </div>
                 <div class="footer-col">
                     <h4>قانوني</h4>
-                    <a href="/privacy-policy/">سياسة الخصوصية</a>
-                    <a href="/privacy-policy-uc/">سياسة الخصوصية (UC)</a>
-                    <a href="/data-deletion-wc/">حذف البيانات (WC)</a>
-                    <a href="/data-deletion-uc/">حذف البيانات (UC)</a>
+                    <a href="/privacy-policy-uc/">سياسة الخصوصية</a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -109,15 +120,13 @@
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&#8593;</button>
     <script src="/js/main.js"></script>
     <script>
-        document.getElementById('deletionForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formSuccess = document.getElementById('formSuccess');
-            formSuccess.style.display = 'block';
-            this.reset();
-            setTimeout(() => {
-                formSuccess.style.display = 'none';
-            }, 5000);
-        });
+        if (window.location.search.includes('sent=1')) {
+            const msg = document.createElement('div');
+            msg.className = 'form-success';
+            msg.style.display = 'block';
+            msg.innerHTML = '<p>وصلنا طلبك ! سنتواصل معك خلال 48 ساعة</p>';
+            document.getElementById('deletionForm').appendChild(msg);
+        }
     </script>
 </body>
 </html>

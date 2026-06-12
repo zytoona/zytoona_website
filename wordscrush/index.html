@@ -3,122 +3,760 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Words Crush - Build words, build your brain. Play the ultimate Arabic word game with 6 exciting modes and 50M+ downloads worldwide.">
-    <meta name="keywords" content="words crush, word games, Arabic games, mobile games, puzzle games">
+    <meta name="description" content="Words Crush - Build words, build your brain. The #1 Arabic word game with 6 exciting puzzle modes, 50M+ downloads worldwide.">
+    <meta name="keywords" content="words crush, word games, Arabic games, mobile games, puzzle games, كلمات كراش">
     <meta name="author" content="Zytoona Games">
     <meta property="og:title" content="Words Crush - كلمات كراش | Zytoona Games">
-    <meta property="og:description" content="Build words, build your brain. Enjoy 6 exciting game modes.">
+    <meta property="og:description" content="Build words, build your brain. 6 exciting game modes, 50M+ downloads.">
     <meta property="og:type" content="website">
+    <meta property="og:image" content="https://zytoona.com/images/wordscrush/sharegame_icon_e.png">
+    <meta property="og:url" content="https://zytoona.com/wordscrush/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Words Crush - كلمات كراش | Zytoona Games">
+    <meta name="twitter:description" content="Build words, build your brain. 6 exciting game modes, 50M+ downloads.">
+    <meta name="twitter:image" content="https://zytoona.com/images/wordscrush/sharegame_icon_e.png">
+    <link rel="canonical" href="https://zytoona.com/wordscrush/">
     <title>Words Crush - كلمات كراش | Zytoona Games</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="64x64" href="/images/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6QT3NP9PSZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6QT3NP9PSZ');
+    </script>
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: 'Inter', -apple-system, sans-serif;
+        color: #fff;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        background: #0e1f33;
+      }
+      img { max-width: 100%; height: auto; display: block; }
+      a { color: inherit; text-decoration: none; }
+
+      /* Constrain entire page to content width on wide screens */
+      .page-shell {
+        max-width: 980px;
+        margin: 0 auto;
+        overflow: hidden;
+      }
+
+      .page-col {
+        max-width: 980px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      /* ONE continuous blue tiles for ALL blue sections */
+      .blue-world {
+        background: url('/images/wordscrush/bluetiles_loop.png') repeat;
+        background-size: 100% auto;
+      }
+
+      .gold-section {
+        background-color: #f5a623;
+      }
+
+      /* ========== HERO ========== */
+      .hero {
+        text-align: center;
+        padding: 16px 20px 0;
+        position: relative;
+      }
+      .zytoona-tag {
+        position: absolute;
+        top: 12px;
+        left: 0;
+        z-index: 10;
+      }
+      .zytoona-tag img { width: 90px; }
+      .hero-tagline {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 3;
+        font-size: clamp(1.1rem, 2.6vw, 1.5rem);
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-shadow: 0 2px 6px rgba(0,0,0,0.7), 0 4px 16px rgba(0,0,0,0.4);
+        text-align: center;
+        padding: 6px 20px;
+      }
+
+      /* ========== MAP + VIDEO COMBO (video_part.png) ========== */
+      .map-video-wrap {
+        position: relative;
+        line-height: 0;
+        margin-top: -14px;
+        z-index: 1;
+      }
+      .map-video-wrap > picture {
+        display: block;
+        line-height: 0;
+      }
+      .map-video-wrap > picture > img {
+        width: 100%;
+        display: block;
+      }
+      /*
+        video_part.png is 980x1558.
+        White box: x=62..917 (6.3%..93.6%), y=560..1517 (35.9%..97.4%)
+        Box is 855x957. For 16:9 video (855x481), center vertically.
+        Vertical center offset: (957-481)/2 = 238px = 15.3% of 1558
+        So video top = 35.9% + 15.3% = 51.2%, height = 481/1558 = 30.9%
+      */
+      .video-in-map {
+        position: absolute;
+        top: 66.8%;
+        left: 7.1%;
+        width: 85.6%;
+        height: 30.2%;
+        border-radius: 6px;
+        overflow: hidden;
+        background: #000;
+      }
+      .video-in-map iframe {
+        width: 100%; height: 100%;
+        border: none;
+        position: absolute;
+        top: 0; left: 0;
+      }
+      .video-thumb-wrap {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        cursor: pointer;
+        z-index: 2;
+      }
+      .video-thumb-wrap img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+      }
+      .play-btn {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 72px; height: 50px;
+        background: rgba(255,0,0,0.85);
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s, transform 0.2s;
+      }
+      .play-btn:hover { background: #ff0000; transform: translate(-50%, -50%) scale(1.08); }
+      .play-btn::after {
+        content: '';
+        border-style: solid;
+        border-width: 12px 0 12px 20px;
+        border-color: transparent transparent transparent #fff;
+        margin-left: 3px;
+      }
+
+      /* ========== DOWNLOAD NOW ========== */
+      .download-area {
+        position: relative;
+        text-align: center;
+        padding: 50px 20px 55px;
+      }
+      .download-area::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 50%;
+        transform: translateX(-50%);
+        width: 110%;
+        height: 100%;
+        background: linear-gradient(180deg,
+          rgba(0,0,0,0.35) 0%,
+          rgba(0,20,50,0.5) 8%,
+          rgba(0,40,80,0.45) 50%,
+          rgba(0,20,50,0.5) 92%,
+          rgba(0,0,0,0.35) 100%
+        );
+        z-index: 0;
+        box-shadow: 0 0 40px rgba(0,0,0,0.3);
+      }
+      .download-area > * { position: relative; z-index: 1; }
+      .download-area h2 {
+        font-size: clamp(1.4rem, 3vw, 2rem);
+        font-weight: 900;
+        margin-bottom: 22px;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      }
+      .badges {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .badges a { transition: transform 0.2s; }
+      .badges a:hover { transform: translateY(-2px); }
+      .badges img { height: 56px; }
+
+      /* ========== TRANSITION: blue → gold ========== */
+      /* no image — just a clean edge */
+
+      /* ========== GOLD: 6 Game Modes ========== */
+      .modes-area {
+        text-align: center;
+        padding: 30px 10px 50px;
+      }
+      .modes-area h2 {
+        font-size: clamp(1.4rem, 3.5vw, 2rem);
+        font-weight: 900;
+        color: #1a3a5c;
+        margin-bottom: 20px;
+      }
+      .modes-screenshot-frame {
+        max-width: 340px;
+        margin: 0 auto 32px;
+        padding: 6px;
+        background: #fff;
+        border-radius: 22px;
+        box-shadow: 0 16px 50px rgba(0,0,0,0.25);
+      }
+      .modes-screenshot-frame img {
+        width: 100%;
+        border-radius: 18px;
+        display: block;
+      }
+
+      /* ========== TRANSITION: gold → blue ========== */
+      /* no image — just a clean edge */
+
+      /* ========== SCREENSHOTS ========== */
+      .screenshots-area {
+        padding: 50px 0;
+        text-align: center;
+      }
+      .screenshots-area h2 {
+        font-size: clamp(1.3rem, 3vw, 1.8rem);
+        font-weight: 900;
+        margin-bottom: 28px;
+        padding: 0 20px;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      }
+      .screenshots-area h2 span { color: #fbbf24; }
+      .ss-scroll {
+        display: flex;
+        gap: 18px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: 56px 36% 40px;
+        scrollbar-width: none;
+        scroll-behavior: smooth;
+      }
+      .ss-scroll::-webkit-scrollbar { display: none; }
+      .ss-card {
+        position: relative;
+        flex: 0 0 260px;
+        scroll-snap-align: center;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+        transform: scale(0.88);
+        opacity: 0.7;
+        will-change: transform, opacity;
+        cursor: pointer;
+      }
+      .ss-card-img {
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: 0 10px 32px rgba(0,0,0,0.4);
+        transition: box-shadow 0.4s ease;
+      }
+      .ss-card.active {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+      .ss-card.active .ss-card-img {
+        box-shadow: 0 20px 56px rgba(0,0,0,0.5);
+      }
+      .ss-card.near {
+        transform: scale(0.94);
+        opacity: 0.8;
+      }
+      .ss-card img { width: 100%; display: block; }
+
+      /* ========== FINAL CTA ========== */
+      .final-cta {
+        position: relative;
+        text-align: center;
+        padding: 30px 20px 60px;
+      }
+      .final-cta::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 50%;
+        transform: translateX(-50%);
+        width: 110%;
+        height: 100%;
+        background: linear-gradient(180deg,
+          rgba(0,0,0,0.3) 0%,
+          rgba(0,15,40,0.5) 12%,
+          rgba(0,30,70,0.45) 50%,
+          rgba(0,15,40,0.5) 88%,
+          rgba(0,0,0,0.3) 100%
+        );
+        z-index: 0;
+        box-shadow: 0 0 40px rgba(0,0,0,0.25);
+      }
+      .final-cta {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .final-cta > * { position: relative; z-index: 1; }
+      /* Game icon — BIG with clean shadow, no border frame */
+      .final-cta .cta-icon-wrap {
+        display: block;
+        width: 300px;
+        margin-bottom: 28px;
+        transition: transform 0.3s ease;
+      }
+      .final-cta .cta-icon-wrap:hover {
+        transform: translateY(-4px);
+      }
+      .final-cta .cta-icon {
+        width: 100%;
+        border-radius: 60px;
+        box-shadow:
+          0 8px 16px rgba(0,0,0,0.3),
+          0 24px 48px rgba(0,0,0,0.3),
+          0 40px 80px rgba(0,0,0,0.2);
+      }
+      .final-cta h2 {
+        font-size: clamp(1.4rem, 3vw, 2rem);
+        font-weight: 900;
+        margin-bottom: 10px;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      }
+      .final-cta p {
+        color: rgba(255,255,255,0.8);
+        margin-bottom: 24px;
+        font-size: 1.05rem;
+        font-weight: 600;
+      }
+
+      /* ========== FOOTER ========== */
+      .wc-footer {
+        text-align: center;
+        padding: 24px 20px;
+        background: #0e1f33;
+        box-shadow: 0 -8px 30px rgba(0,0,0,0.4);
+        position: relative;
+        z-index: 5;
+      }
+      .wc-footer-logo {
+        display: block;
+        margin: 0 auto 12px;
+      }
+      .wc-footer-logo img {
+        height: 56px;
+        border-radius: 12px;
+        margin: 0 auto;
+      }
+      .wc-footer p { color: rgba(255,255,255,0.35); font-size: 0.75rem; }
+      .wc-footer-links {
+        margin-top: 8px;
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+      }
+      .wc-footer-links a {
+        color: rgba(255,255,255,0.35);
+        font-size: 0.75rem;
+        transition: color 0.2s;
+      }
+      .wc-footer-links a:hover { color: #fbbf24; }
+
+      /* ========== ENTRANCE ANIMATIONS ========== */
+
+      /* 1. Tag flag-opening: appears AFTER logo (delay 1.6s) */
+      @keyframes flagOpen {
+        0%   { transform: scaleX(0); opacity: 0; }
+        40%  { opacity: 1; }
+        100% { transform: scaleX(1); opacity: 1; }
+      }
+      .zytoona-tag {
+        transform-origin: left center;
+        transform: scaleX(0);
+        opacity: 0;
+        animation: flagOpen 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.6s forwards;
+      }
+
+      /* 2. Logo: portable renderer — 917×705 stage scaled to fit */
+      .logo-mount {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto 18px;
+      }
+      /* Entrance animations are handled by JS (staggered opacity fade).
+         The renderer sets inline transform (matrix) — we never touch transform in CSS. */
+      @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+
+      /* 3. Tagline text appear — after all letters + tag */
+      @keyframes fadeUp {
+        0%   { transform: translateY(16px); opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; }
+      }
+      .hero-tagline {
+        opacity: 0;
+        animation: fadeUp 0.6s ease-out 1.9s forwards;
+      }
+
+      /* 4. Scroll-triggered reveals */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal-scale {
+        opacity: 0;
+        transform: scale(0.85);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .reveal-scale.visible {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* ========== SCREENSHOT LABELS (above card, active only) ========== */
+      .ss-card-label {
+        position: absolute;
+        left: 50%;
+        bottom: 100%;
+        transform: translateX(-50%) translateY(10px);
+        white-space: nowrap;
+        font-size: 0.85rem;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #fff;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        opacity: 0;
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        pointer-events: none;
+        padding-bottom: 8px;
+      }
+      .ss-card.active .ss-card-label {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      /* ========== RESPONSIVE ========== */
+      @media (max-width: 600px) {
+        /* logo size controlled by JS fitToWidth */
+        .badges img { height: 44px; }
+        .modes-screenshot { max-width: 95%; }
+        .ss-card { flex: 0 0 160px; }
+        .zytoona-tag img { width: 64px; }
+        .blue-world { background-size: 100% auto; }
+        .final-cta .cta-icon-wrap { width: 220px; }
+        .final-cta .cta-icon { border-radius: 44px; }
+        .ss-card { flex: 0 0 200px; }
+      }
+    </style>
+  <!-- Google AdSense Auto Ads -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2296352381124224"
+       crossorigin="anonymous"></script>
 </head>
-<body class="ltr">
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <a href="/" class="nav-logo">
-                <img src="/images/logo_zytoona.png" alt="زيتونة" style="height:42px;border-radius:12px;">
-                <span>زيتونة</span>
-            </a>
-            <button class="nav-toggle" id="navToggle" aria-label="القائمة"><span></span><span></span><span></span></button>
-            <div class="nav-links" id="navLinks">
-                <a href="/#games">الألعاب</a>
-                <a href="/#about">عن زيتونة</a>
-                <a href="/contact/">تواصل معنا</a>
-                <a href="/privacy-policy/">الخصوصية</a>
-                <a href="/campaign/" class="nav-cta">حمّل الآن</a>
-            </div>
-        </div>
-    </nav>
+<body>
 
-    <section class="wc-hero">
-        <div class="container">
-            <div class="wc-hero-grid">
-                <div class="wc-hero-content">
-                    <h1>BUILD WORDS,<br>BUILD YOUR BRAIN</h1>
-                    <p class="wc-hero-subtitle">Enjoy 6 game modes and challenge your vocabulary skills across the Arab world.</p>
-                    
-                    <ul class="wc-modes">
-                        <li>Explore the Arab world map</li>
-                        <li>6 exciting game modes</li>
-                        <li>50M+ downloads worldwide</li>
-                        <li>Play with friends</li>
-                        <li>Daily challenges</li>
-                        <li>Available in Arabic & English</li>
-                    </ul>
+  <div class="page-shell">
 
-                    <div class="download-buttons">
-                        <a href="https://play.google.com/store/apps/details?id=com.zytoona.wordscrush" class="btn btn-primary" target="_blank">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-1.707l2.108 1.218a1 1 0 010 1.564l-2.108 1.218-2.533-2.533 2.533-2.467zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
-                            Google Play
-                        </a>
-                        <a href="https://apps.apple.com/app/words-crush/id1234567890" class="btn btn-secondary" target="_blank">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                            App Store
-                        </a>
-                    </div>
-                </div>
-                <div class="wc-hero-image">
-                    <div class="image-placeholder">
-                        <svg width="100%" height="100%" viewBox="0 0 400 500" fill="none">
-                            <rect width="400" height="500" fill="#f3f4f6"/>
-                            <rect x="20" y="20" width="360" height="460" rx="30" fill="#7c3aed" opacity="0.1"/>
-                            <circle cx="200" cy="250" r="80" fill="#7c3aed" opacity="0.2"/>
-                            <text x="200" y="260" text-anchor="middle" font-size="24" fill="#7c3aed" opacity="0.3">Words Crush</text>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- ONE continuous blue tiles wrapper -->
+  <div class="blue-world">
+    <div class="page-col">
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="/" class="nav-logo">
-                        <img src="/images/logo_zytoona.png" alt="زيتونة" style="height:36px;border-radius:8px;">
-                        <span>العاب زيتونة</span>
-                    </a>
-                    <p>شركة ألعاب عربية رائدة. متعة وتحدي وتشويق في كل لعبة نصنعها.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>ألعابنا</h4>
-                    <a href="https://play.google.com/store/apps/details?id=com.zytoona.wordscrush" target="_blank">كلمات كراش</a>
-                    <a href="https://play.google.com/store/apps/details?id=com.zytoona.uncrossed" target="_blank">متقاطعة كراش</a>
-                    <a href="https://play.google.com/store/apps/details?id=com.zytoona.onehit" target="_blank">ضربة معلم</a>
-                    <a href="https://play.google.com/store/apps/details?id=com.zytoona.lostword2" target="_blank">كلمة السر</a>
-                </div>
-                <div class="footer-col">
-                    <h4>الشركة</h4>
-                    <a href="/#about">عن زيتونة</a>
-                    <a href="/contact/">تواصل معنا</a>
-                    <a href="/campaign/">حمّل الألعاب</a>
-                </div>
-                <div class="footer-col">
-                    <h4>قانوني</h4>
-                    <a href="/privacy-policy/">سياسة الخصوصية</a>
-                    <a href="/privacy-policy-uc/">سياسة الخصوصية (UC)</a>
-                    <a href="/data-deletion-wc/">حذف البيانات (WC)</a>
-                    <a href="/data-deletion-uc/">حذف البيانات (UC)</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span>&copy; 2025 العاب زيتونة. جميع الحقوق محفوظة.</span>
-                <div class="footer-social">
-                    <a href="https://play.google.com/store/apps/developer?id=Zytoona" target="_blank" rel="noopener" aria-label="Google Play">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-1.707l2.108 1.218a1 1 0 010 1.564l-2.108 1.218-2.533-2.533 2.533-2.467zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
-                    </a>
-                    <a href="https://apps.apple.com/developer/al-zytoona-entertainment-ltd/id1040152103" target="_blank" rel="noopener" aria-label="App Store">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                    </a>
-                </div>
-            </div>
+      <!-- Zytoona tag -->
+      <a href="/" class="zytoona-tag">
+        <img src="/images/wordscrush/zytoona_tag.png" alt="Zytoona Games" width="166" height="170">
+      </a>
+
+      <!-- Hero: portable logo renderer + tagline -->
+      <div class="hero">
+        <div class="logo-mount" id="logoMount"></div>
+      </div>
+
+      <!-- Map + Video in one image. YouTube positioned over the white box. -->
+      <div class="map-video-wrap">
+        <h1 class="hero-tagline">BUILD WORDS, BUILD YOUR BRAIN</h1>
+        <picture>
+          <source srcset="/images/wordscrush/video_part.webp" type="image/webp">
+          <img src="/images/wordscrush/video_part.png" alt="Words Crush world map" width="980" height="1558">
+        </picture>
+        <div class="video-in-map" id="videoEmbed">
+          <div class="video-thumb-wrap" id="videoThumb">
+            <img src="https://img.youtube.com/vi/RI_1UyS3StE/maxresdefault.jpg" alt="Words Crush gameplay video">
+            <div class="play-btn"></div>
+          </div>
         </div>
+      </div>
+
+      <!-- Download Now with 3D stripe -->
+      <div class="download-area reveal">
+        <h2>Download now!</h2>
+        <div class="badges">
+          <a href="https://apps.apple.com/us/app/words-crush-word-puzzle-game/id1530922357" target="_blank" rel="noopener">
+            <img src="/images/wordscrush/badge_apple.png" alt="Download on the App Store">
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=com.zytoona.wordscrush" target="_blank" rel="noopener">
+            <img src="/images/wordscrush/download-google-ext-1.png" alt="Get it on Google Play">
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- end blue-world top -->
+
+  <!-- ==================== GOLD SECTION ==================== -->
+  <div class="gold-section">
+    <div class="page-col">
+      <div class="modes-area">
+        <h2 class="reveal">Enjoy 6 game modes!</h2>
+        <div class="modes-screenshot-frame reveal-scale">
+          <picture>
+            <source srcset="/images/wordscrush/ss_iphone_6_modes_v2.webp" type="image/webp">
+            <img src="/images/wordscrush/ss_iphone_6_modes_v2.png" alt="6 Types of Puzzles" width="1080" height="1920">
+          </picture>
+        </div>
+        <div class="badges">
+          <a href="https://apps.apple.com/us/app/words-crush-word-puzzle-game/id1530922357" target="_blank" rel="noopener">
+            <img src="/images/wordscrush/badge_apple.png" alt="Download on the App Store">
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=com.zytoona.wordscrush" target="_blank" rel="noopener">
+            <img src="/images/wordscrush/download-google-ext-1.png" alt="Get it on Google Play">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== BLUE: Bottom sections ==================== -->
+  <div class="blue-world">
+    <div class="page-col">
+
+      <!-- Screenshots carousel -->
+      <div class="screenshots-area reveal">
+        <h2>Explore <span>Every Mode</span></h2>
+        <div class="ss-scroll">
+          <div class="ss-card"><span class="ss-card-label">World Map</span><div class="ss-card-img"><picture><source srcset="/images/wordscrush/ss_ipx_map_v2.webp" type="image/webp"><img src="/images/wordscrush/ss_ipx_map_v2.png" alt="World Map" loading="lazy" width="1284" height="2778"></picture></div></div>
+          <div class="ss-card"><span class="ss-card-label">Crossword</span><div class="ss-card-img"><picture><source srcset="/images/wordscrush/ss_ipx_crossword_v2.webp" type="image/webp"><img src="/images/wordscrush/ss_ipx_crossword_v2.png" alt="Crossword" loading="lazy" width="1284" height="2778"></picture></div></div>
+          <div class="ss-card"><span class="ss-card-label">Word Search</span><div class="ss-card-img"><picture><source srcset="/images/wordscrush/ss_ipx_wordsearch_v2.webp" type="image/webp"><img src="/images/wordscrush/ss_ipx_wordsearch_v2.png" alt="Word Search" loading="lazy" width="1284" height="2778"></picture></div></div>
+          <div class="ss-card"><span class="ss-card-label">Broken Words</span><div class="ss-card-img"><picture><source srcset="/images/wordscrush/ss_ipx_broken_v2.webp" type="image/webp"><img src="/images/wordscrush/ss_ipx_broken_v2.png" alt="Broken Words" loading="lazy" width="1284" height="2778"></picture></div></div>
+          <div class="ss-card"><span class="ss-card-label">Letter Mix</span><div class="ss-card-img"><picture><source srcset="/images/wordscrush/ss_ipx_lettermix_v2.webp" type="image/webp"><img src="/images/wordscrush/ss_ipx_lettermix_v2.png" alt="Letter Mix" loading="lazy" width="1284" height="2778"></picture></div></div>
+          <div class="ss-card"><span class="ss-card-label">Proverbs</span><div class="ss-card-img"><picture><source srcset="/images/wordscrush/ss_ipx_proverb_v2.webp" type="image/webp"><img src="/images/wordscrush/ss_ipx_proverb_v2.png" alt="Proverbs" loading="lazy" width="1284" height="2778"></picture></div></div>
+        </div>
+      </div>
+
+      <!-- Final CTA -->
+      <div class="final-cta">
+        <picture class="cta-icon-wrap reveal-scale">
+          <source srcset="/images/wordscrush/sharegame_icon_e.webp" type="image/webp">
+          <img src="/images/wordscrush/sharegame_icon_e.png" alt="Words Crush" class="cta-icon" width="400" height="400">
+        </picture>
+        <h2>Ready to Crush Some Words?</h2>
+        <p>Join millions of players worldwide.</p>
+        <div class="badges">
+          <a href="https://apps.apple.com/us/app/words-crush-word-puzzle-game/id1530922357" target="_blank" rel="noopener">
+            <img src="/images/wordscrush/badge_apple.png" alt="Download on the App Store">
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=com.zytoona.wordscrush" target="_blank" rel="noopener">
+            <img src="/images/wordscrush/download-google-ext-1.png" alt="Get it on Google Play">
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer sits inside the blue-world so no seam -->
+    <footer class="wc-footer">
+      <a href="https://zytoona.com" class="wc-footer-logo">
+        <img src="/images/logo_zytoona.png" alt="Zytoona Games">
+      </a>
+      <p>&copy; 2025 All rights reserved.</p>
+      <div class="wc-footer-links">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/contact/">Contact</a>
+        <a href="/data-deletion-wc/">Data Deletion</a>
+      </div>
     </footer>
-    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&#8593;</button>
-    <script src="/js/main.js"></script>
+
+  </div>
+
+  </div><!-- end page-shell -->
+
+  <!-- Logo renderer: layout data + portable renderer -->
+  <script src="/js/logo-layout.js"></script>
+  <script src="/js/portable-logo-renderer.js"></script>
+  <script>
+    // 1. Create the logo using the portable renderer — exact 917×705 stage, scaled to fit
+    (function() {
+      var mount = document.getElementById('logoMount');
+      if (!mount) return;
+
+      var logo = window.WordsCrushPortableLogo.create(mount, {
+        basePath: '/images/wordscrush',
+        scale: 1,
+        referenceVisible: false
+      });
+
+      // Fit to container width on load + resize — 70% of hero width, max 320px
+      function fitLogo() {
+        var heroW = mount.parentElement.offsetWidth;
+        var target = Math.min(heroW * 0.7, 320);
+        logo.fitToWidth(target);
+      }
+      fitLogo();
+      window.addEventListener('resize', fitLogo);
+
+      // 2. Entrance animations
+      //    - WORDS tiles: drop from top (translate Y offset → 0)
+      //    - CRUSH tiles: slide from right (translate X offset → 0)
+      //    - Shadows: simple opacity fade, delayed until tiles have settled
+      //    Uses CSS `translate` property (independent of `transform` which holds the matrix)
+      var pieces = mount.querySelectorAll('.wc-logo-piece');
+      var anims = {
+        // WORDS tiles — drop from top, staggered left to right
+        'words-w': { delay: 300, type: 'drop' },
+        'words-o': { delay: 400, type: 'drop' },
+        'words-r': { delay: 500, type: 'drop' },
+        'words-d': { delay: 600, type: 'drop' },
+        'words-s': { delay: 700, type: 'drop' },
+        // CRUSH tiles — slide from right, staggered
+        'crush-c': { delay: 850,  type: 'slide' },
+        'crush-r': { delay: 950,  type: 'slide' },
+        'crush-u': { delay: 1050, type: 'slide' },
+        'crush-s': { delay: 1150, type: 'slide' },
+        'crush-h': { delay: 1250, type: 'slide' },
+        // Shadows — fade in AFTER tiles settle (tiles done ~1.25s + 0.5s anim = ~1.75s)
+        'shadow-top-hard':    { delay: 1500, type: 'shadow' },
+        'shadow-top-soft':    { delay: 1500, type: 'shadow' },
+        'shadow-bottom-hard': { delay: 1700, type: 'shadow' },
+        'shadow-bottom-soft': { delay: 1700, type: 'shadow' }
+      };
+
+      pieces.forEach(function(piece) {
+        var id = piece.dataset.layerId;
+        var cfg = anims[id];
+        if (!cfg) return;
+
+        var finalOpacity = piece.style.opacity || '1';
+        piece.style.opacity = '0';
+
+        if (cfg.type === 'drop') {
+          // Start 80px above (in the 917×705 stage space)
+          piece.style.translate = '0 -80px';
+          piece.style.transition = 'none';
+          setTimeout(function() {
+            piece.style.transition = 'opacity 0.5s cubic-bezier(0.22,1,0.36,1), translate 0.5s cubic-bezier(0.22,1,0.36,1)';
+            piece.style.opacity = finalOpacity;
+            piece.style.translate = '0 0';
+          }, cfg.delay);
+        } else if (cfg.type === 'slide') {
+          // Start 120px to the right
+          piece.style.translate = '120px 0';
+          piece.style.transition = 'none';
+          setTimeout(function() {
+            piece.style.transition = 'opacity 0.5s cubic-bezier(0.22,1,0.36,1), translate 0.5s cubic-bezier(0.22,1,0.36,1)';
+            piece.style.opacity = finalOpacity;
+            piece.style.translate = '0 0';
+          }, cfg.delay);
+        } else if (cfg.type === 'shadow') {
+          // Simple fade: transparent → final alpha, after tiles done
+          piece.style.transition = 'none';
+          setTimeout(function() {
+            piece.style.transition = 'opacity 0.6s ease-out';
+            piece.style.opacity = finalOpacity;
+          }, cfg.delay);
+        }
+      });
+
+    })();
+
+    // Video click → YouTube embed
+    document.getElementById('videoThumb')?.addEventListener('click', function() {
+      var container = document.getElementById('videoEmbed');
+      this.remove();
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/RI_1UyS3StE?autoplay=1&rel=0';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      container.appendChild(iframe);
+    });
+
+    // Apple-style scroll: scale cards based on distance from center
+    (function() {
+      var scroll = document.querySelector('.ss-scroll');
+      if (!scroll) return;
+      var cards = scroll.querySelectorAll('.ss-card');
+
+      function updateCards() {
+        var scrollCenter = scroll.scrollLeft + scroll.offsetWidth / 2;
+        cards.forEach(function(card) {
+          var cardCenter = card.offsetLeft + card.offsetWidth / 2;
+          var dist = Math.abs(scrollCenter - cardCenter);
+          var halfCard = card.offsetWidth * 0.6;
+          var maxNear = scroll.offsetWidth * 0.4;
+          card.classList.remove('active', 'near');
+          if (dist < halfCard) {
+            card.classList.add('active');
+          } else if (dist < maxNear) {
+            card.classList.add('near');
+          }
+        });
+      }
+
+      cards.forEach(function(card) {
+        card.addEventListener('click', function() {
+          var cardCenter = card.offsetLeft + card.offsetWidth / 2;
+          var scrollTarget = cardCenter - scroll.offsetWidth / 2;
+          scroll.scrollTo({ left: scrollTarget, behavior: 'smooth' });
+        });
+      });
+
+      scroll.addEventListener('scroll', updateCards, { passive: true });
+      setTimeout(updateCards, 100);
+      window.addEventListener('resize', updateCards);
+    })();
+
+    // Scroll-triggered reveal animations
+    (function() {
+      var reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-scale');
+      if (!reveals.length) return;
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      reveals.forEach(function(el) {
+        observer.observe(el);
+      });
+    })();
+  </script>
 </body>
 </html>

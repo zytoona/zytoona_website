@@ -1,167 +1,347 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Download All Zytoona Games - Get access to our entire collection of Arabic mobile games for free.">
-    <meta name="keywords" content="download games, zytoona games, mobile games, arabic games">
-    <meta name="author" content="Zytoona Games">
-    <meta property="og:title" content="Download All Games | Zytoona Games">
-    <meta property="og:description" content="Download all Zytoona Games for free. Experience fun, challenge, and excitement.">
-    <meta property="og:type" content="website">
-    <title>Download All Games | Zytoona Games</title>
+    <meta name="description" content="حمّل جميع العاب زيتونة مجاناً">
+    <meta name="robots" content="noindex, nofollow">
+    <title>حمّل جميع العاب زيتونة</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6QT3NP9PSZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6QT3NP9PSZ');
+    </script>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #0a1628 0%, #132042 50%, #0e1a35 100%);
+            color: #e8edf5;
+            min-height: 100vh;
+            padding: 24px 16px 40px;
+        }
+        .campaign-wrap {
+            max-width: 540px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .campaign-header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+        .campaign-logo {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            margin-bottom: 14px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .campaign-header h1 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .campaign-subtitle {
+            font-size: 0.95rem;
+            color: #94a3b8;
+        }
+
+        /* Game list */
+        .game-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .game-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 14px 16px;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .game-row:active {
+            transform: scale(0.98);
+            background: rgba(255,255,255,0.1);
+        }
+        .game-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+        }
+        .game-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .game-name {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+            color: #f1f5f9;
+        }
+        .game-desc {
+            font-size: 0.78rem;
+            color: #94a3b8;
+            line-height: 1.3;
+        }
+        .game-meta {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.72rem;
+            color: #64748b;
+            margin-top: 4px;
+            direction: ltr;
+            justify-content: flex-end;
+        }
+        .game-meta .sep { color: #475569; }
+
+        /* Store buttons */
+        .store-btns {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+        .store-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            text-decoration: none;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 8px;
+            white-space: nowrap;
+            transition: opacity 0.2s;
+        }
+        .store-btn:active { opacity: 0.7; }
+        .store-btn svg { flex-shrink: 0; }
+        .btn-gplay {
+            background: rgba(52, 168, 83, 0.15);
+            color: #4ade80;
+            border: 1px solid rgba(52, 168, 83, 0.25);
+        }
+        .btn-apple {
+            background: rgba(148, 163, 184, 0.1);
+            color: #cbd5e1;
+            border: 1px solid rgba(148, 163, 184, 0.15);
+        }
+
+        /* Badge */
+        .game-badge {
+            display: inline-block;
+            font-size: 0.62rem;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 6px;
+            margin-inline-start: 6px;
+            vertical-align: middle;
+        }
+        .badge-new {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+        }
+        .badge-star {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+        }
+
+        /* Footer note */
+        .campaign-footer {
+            text-align: center;
+            margin-top: 32px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        .campaign-footer p {
+            font-size: 0.78rem;
+            color: #475569;
+        }
+        .campaign-footer img {
+            width: 28px;
+            height: 28px;
+            border-radius: 7px;
+            margin-bottom: 6px;
+            opacity: 0.5;
+        }
+    </style>
+  <!-- Google AdSense Auto Ads -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2296352381124224"
+       crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <a href="/" class="nav-logo">
-                <img src="/images/logo_zytoona.png" alt="زيتونة" style="height:42px;border-radius:12px;">
-                <span>زيتونة</span>
-            </a>
-            <button class="nav-toggle" id="navToggle" aria-label="القائمة"><span></span><span></span><span></span></button>
-            <div class="nav-links" id="navLinks">
-                <a href="/#games">الألعاب</a>
-                <a href="/#about">عن زيتونة</a>
-                <a href="/contact/">تواصل معنا</a>
-                <a href="/privacy-policy/">الخصوصية</a>
-                <a href="/campaign/" class="nav-cta">حمّل الآن</a>
-            </div>
+    <div class="campaign-wrap">
+        <div class="campaign-header">
+            <img src="/images/logo_zytoona.png" alt="زيتونة" class="campaign-logo">
+            <h1>العاب زيتونة</h1>
+            <p class="campaign-subtitle">حمّل جميع العابنا مجاناً</p>
         </div>
-    </nav>
 
-    <section class="campaign-section">
-        <div class="container">
-            <div class="campaign-header">
-                <h1>حمّل جميع العاب زيتونة</h1>
-                <p class="campaign-subtitle">مجاناً</p>
-                <p class="campaign-description">اختر من مجموعتنا الكاملة من الألعاب العربية المشهورة</p>
-            </div>
+        <div class="game-list">
 
-            <div class="campaign-grid">
-                <div class="campaign-card">
-                    <div class="campaign-card-image">
-                        <img src="https://lh3.googleusercontent.com/kSE7I6KoJZr2l0uWIYlwS5jAcj-8bHV6WQUpT0PlukR3BXt93EwQW-cWBIw-OH8P=w240" alt="Words Crush">
-                    </div>
-                    <h3>كلمات كراش</h3>
-                    <p>Words Crush</p>
-                    <div class="campaign-card-links">
-                        <a href="https://play.google.com/store/apps/details?id=com.zytoona.wordscrush" class="btn btn-sm btn-primary" target="_blank">Google Play</a>
-                        <a href="https://apps.apple.com/app/words-crush/id1234567890" class="btn btn-sm btn-secondary" target="_blank">App Store</a>
-                    </div>
+            <!-- 1. كلمات كراش -->
+            <div class="game-row">
+                <img src="/images/icon_wc.png" alt="كلمات كراش" class="game-icon">
+                <div class="game-info">
+                    <div class="game-name">كلمات كراش <span class="game-badge badge-star">★ الأكثر تحميلاً</span></div>
+                    <div class="game-desc">استكشف خريطة العالم العربي وحل المراحل المشوقة</div>
+                    <div class="game-meta"><span>+100 مليون</span><span class="sep">·</span><span>⭐ 4.8</span></div>
                 </div>
-
-                <div class="campaign-card">
-                    <div class="campaign-card-image">
-                        <img src="https://lh3.googleusercontent.com/hMhMGg1dxpFlvQW-q8Oqy_EULl4_D56Zm4-6T8VuFRBi2qpT-EWp2q5OuXBQCqo=w240" alt="Uncrossed">
-                    </div>
-                    <h3>متقاطعة كراش</h3>
-                    <p>Uncrossed</p>
-                    <div class="campaign-card-links">
-                        <a href="https://play.google.com/store/apps/details?id=com.zytoona.uncrossed" class="btn btn-sm btn-primary" target="_blank">Google Play</a>
-                        <a href="https://apps.apple.com/app/uncrossed/id1234567891" class="btn btn-sm btn-secondary" target="_blank">App Store</a>
-                    </div>
-                </div>
-
-                <div class="campaign-card">
-                    <div class="campaign-card-image">
-                        <img src="https://lh3.googleusercontent.com/H5mVs3ZSuYL2Z5H-q5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z=w240" alt="One Hit">
-                    </div>
-                    <h3>One Hit</h3>
-                    <p>One Hit Game</p>
-                    <div class="campaign-card-links">
-                        <a href="https://play.google.com/store/apps/details?id=com.zytoona.onehit" class="btn btn-sm btn-primary" target="_blank">Google Play</a>
-                        <a href="https://apps.apple.com/app/one-hit/id1234567892" class="btn btn-sm btn-secondary" target="_blank">App Store</a>
-                    </div>
-                </div>
-
-                <div class="campaign-card">
-                    <div class="campaign-card-image">
-                        <img src="https://lh3.googleusercontent.com/L5mVs3ZSuYL2Z5H-q5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z=w240" alt="Lost Word 2">
-                    </div>
-                    <h3>Lost Word 2</h3>
-                    <p>كلمات مفقودة 2</p>
-                    <div class="campaign-card-links">
-                        <a href="https://play.google.com/store/apps/details?id=com.zytoona.lostword2" class="btn btn-sm btn-primary" target="_blank">Google Play</a>
-                        <a href="https://apps.apple.com/app/lost-word-2/id1234567893" class="btn btn-sm btn-secondary" target="_blank">App Store</a>
-                    </div>
-                </div>
-
-                <div class="campaign-card">
-                    <div class="campaign-card-image">
-                        <img src="https://lh3.googleusercontent.com/M5mVs3ZSuYL2Z5H-q5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z=w240" alt="Game 5">
-                    </div>
-                    <h3>Game 5</h3>
-                    <p>Another Zytoona Game</p>
-                    <div class="campaign-card-links">
-                        <a href="https://play.google.com/store/apps/developer?id=Zytoona" class="btn btn-sm btn-primary" target="_blank">Google Play</a>
-                        <a href="https://apps.apple.com/developer/al-zytoona-entertainment-ltd/id1040152103" class="btn btn-sm btn-secondary" target="_blank">App Store</a>
-                    </div>
-                </div>
-
-                <div class="campaign-card">
-                    <div class="campaign-card-image">
-                        <img src="https://lh3.googleusercontent.com/N5mVs3ZSuYL2Z5H-q5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z=w240" alt="Game 6">
-                    </div>
-                    <h3>Game 6</h3>
-                    <p>More Zytoona Games</p>
-                    <div class="campaign-card-links">
-                        <a href="https://play.google.com/store/apps/developer?id=Zytoona" class="btn btn-sm btn-primary" target="_blank">Google Play</a>
-                        <a href="https://apps.apple.com/developer/al-zytoona-entertainment-ltd/id1040152103" class="btn btn-sm btn-secondary" target="_blank">App Store</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="/" class="nav-logo">
-                        <img src="/images/logo_zytoona.png" alt="زيتونة" style="height:36px;border-radius:8px;">
-                        <span>العاب زيتونة</span>
+                <div class="store-btns">
+                    <a href="https://play.google.com/store/apps/details?id=com.zytoona.wordscrush" class="store-btn btn-gplay" target="_blank" rel="noopener">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-1.707l2.108 1.218a1 1 0 010 1.564l-2.108 1.218-2.533-2.533 2.533-2.467zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
+                        Google Play
                     </a>
-                    <p>شركة ألعاب عربية رائدة. متعة وتحدي وتشويق في كل لعبة نصنعها.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>ألعابنا</h4>
-                    <a href="https://play.google.com/store/apps/details?id=com.zytoona.wordscrush" target="_blank">كلمات كراش</a>
-                    <a href="https://play.google.com/store/apps/details?id=com.zytoona.uncrossed" target="_blank">متقاطعة كراش</a>
-                    <a href="https://play.google.com/store/apps/details?id=com.zytoona.onehit" target="_blank">ضربة معلم</a>
-                    <a href="https://play.google.com/store/apps/details?id=com.zytoona.lostword2" target="_blank">كلمة السر</a>
-                </div>
-                <div class="footer-col">
-                    <h4>الشركة</h4>
-                    <a href="/#about">عن زيتونة</a>
-                    <a href="/contact/">تواصل معنا</a>
-                    <a href="/campaign/">حمّل الألعاب</a>
-                </div>
-                <div class="footer-col">
-                    <h4>قانوني</h4>
-                    <a href="/privacy-policy/">سياسة الخصوصية</a>
-                    <a href="/privacy-policy-uc/">سياسة الخصوصية (UC)</a>
-                    <a href="/data-deletion-wc/">حذف البيانات (WC)</a>
-                    <a href="/data-deletion-uc/">حذف البيانات (UC)</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span>&copy; 2025 العاب زيتونة. جميع الحقوق محفوظة.</span>
-                <div class="footer-social">
-                    <a href="https://play.google.com/store/apps/developer?id=Zytoona" target="_blank" rel="noopener" aria-label="Google Play">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-1.707l2.108 1.218a1 1 0 010 1.564l-2.108 1.218-2.533-2.533 2.533-2.467zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
-                    </a>
-                    <a href="https://apps.apple.com/developer/al-zytoona-entertainment-ltd/id1040152103" target="_blank" rel="noopener" aria-label="App Store">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    <a href="https://apps.apple.com/us/app/words-crush-word-puzzle-game/id1530922357" class="store-btn btn-apple" target="_blank" rel="noopener">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        App Store
                     </a>
                 </div>
             </div>
+
+            <!-- 2. متقاطعة كراش -->
+            <div class="game-row">
+                <img src="/images/icon_uncrossed.png" alt="متقاطعة كراش" class="game-icon">
+                <div class="game-info">
+                    <div class="game-name">متقاطعة كراش <span class="game-badge badge-new">جديد</span></div>
+                    <div class="game-desc">ما بعد كلمات كراش - كلمات متقاطعة</div>
+                    <div class="game-meta"><span>+5 مليون</span><span class="sep">·</span><span>⭐ 4.6</span></div>
+                </div>
+                <div class="store-btns">
+                    <a href="https://play.google.com/store/apps/details?id=com.zytoona.uncrossed" class="store-btn btn-gplay" target="_blank" rel="noopener">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-1.707l2.108 1.218a1 1 0 010 1.564l-2.108 1.218-2.533-2.533 2.533-2.467zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
+                        Google Play
+                    </a>
+                    <a href="https://apps.apple.com/app/id6477771169" class="store-btn btn-apple" target="_blank" rel="noopener">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        App Store
+                    </a>
+                </div>
+            </div>
+
+            <!-- 3. كلمة السر -->
+            <div class="game-row">
+                <img src="/images/icon_lostword.png" alt="كلمة السر" class="game-icon">
+                <div class="game-info">
+                    <div class="game-name">كلمة السر - الجزء الثاني</div>
+                    <div class="game-desc">لعبة البحث عن الكلمة المفقودة</div>
+                    <div class="game-meta"><span>+10 مليون</span><span class="sep">·</span><span>⭐ 4.8</span></div>
+                </div>
+                <div class="store-btns">
+                    <a href="https://play.google.com/store/apps/details?id=com.zytoona.lostword2" class="store-btn btn-gplay" target="_blank" rel="noopener">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-1.707l2.108 1.218a1 1 0 010 1.564l-2.108 1.218-2.533-2.533 2.533-2.467zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
+                        Google Play
+                    </a>
+                    <a href="https://apps.apple.com/app/id1063063902" class="store-btn btn-apple" target="_blank" rel="noopener">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        App Store
+                    </a>
+                </div>
+            </div>
+
+            <!-- 4. ضربة معلم -->
+            <div class="game-row">
+                <img src="/images/icon_oh.png" alt="ضربة معلم" class="game-icon">
+                <div class="game-info">
+                    <div class="game-name">ضربة معلم</div>
+                    <div class="game-desc">لعبة ألغاز منوعة وممتعة</div>
+                    <div class="game-meta"><span>+10 مليون</span><span class="sep">·</span><span>⭐ 4.6</span></div>
+                </div>
+                <div class="store-btns">
+                    <a href="https://play.google.com/store/apps/details?id=com.zytoona.onehit" class="store-btn btn-gplay" target="_blank" rel="noopener">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-1.707l2.108 1.218a1 1 0 010 1.564l-2.108 1.218-2.533-2.533 2.533-2.467zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
+                        Google Play
+                    </a>
+                    <a href="https://apps.apple.com/app/id1108811184" class="store-btn btn-apple" target="_blank" rel="noopener">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        App Store
+                    </a>
+                </div>
+            </div>
+
+            <!-- 5. رشفة -->
+            <div class="game-row">
+                <img src="/images/icon_rashfa.png" alt="رشفة" class="game-icon">
+                <div class="game-info">
+                    <div class="game-name">رشفة - كلمات متقاطعة</div>
+                    <div class="game-desc">لعبة الكلمات المتقاطعة الكلاسيكية</div>
+                    <div class="game-meta"><span>+10 مليون</span><span class="sep">·</span><span>⭐ 4.6</span></div>
+                </div>
+                <div class="store-btns">
+                    <a href="https://play.google.com/store/apps/details?id=com.zytoona.rashfa" class="store-btn btn-gplay" target="_blank" rel="noopener">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-1.707l2.108 1.218a1 1 0 010 1.564l-2.108 1.218-2.533-2.533 2.533-2.467zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
+                        Google Play
+                    </a>
+                    <a href="https://apps.apple.com/app/id1050833737" class="store-btn btn-apple" target="_blank" rel="noopener">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        App Store
+                    </a>
+                </div>
+            </div>
+
+            <!-- 6. اشبكها -->
+            <div class="game-row">
+                <img src="/images/icon_ashbekha.png" alt="اشبكها" class="game-icon">
+                <div class="game-info">
+                    <div class="game-name">اشبكها - تسلية وتفكير</div>
+                    <div class="game-desc">لعبة ربط وتفكير ذهنية</div>
+                    <div class="game-meta"><span>+5 مليون</span><span class="sep">·</span><span>⭐ 4.7</span></div>
+                </div>
+                <div class="store-btns">
+                    <a href="https://play.google.com/store/apps/details?id=com.zytoona.robonza" class="store-btn btn-gplay" target="_blank" rel="noopener">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-1.707l2.108 1.218a1 1 0 010 1.564l-2.108 1.218-2.533-2.533 2.533-2.467zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
+                        Google Play
+                    </a>
+                    <a href="https://apps.apple.com/app/id1150867693" class="store-btn btn-apple" target="_blank" rel="noopener">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        App Store
+                    </a>
+                </div>
+            </div>
+
+            <!-- 7. حرب العقول -->
+            <div class="game-row">
+                <img src="/images/icon_bb.png" alt="حرب العقول" class="game-icon">
+                <div class="game-info">
+                    <div class="game-name">حرب العقول</div>
+                    <div class="game-desc">تحدي أصدقائك في ألعاب ذكاء</div>
+                    <div class="game-meta"><span>+1 مليون</span><span class="sep">·</span><span>⭐ 4.5</span></div>
+                </div>
+                <div class="store-btns">
+                    <a href="#" class="store-btn btn-gplay" style="opacity:0.4;pointer-events:none" target="_blank" rel="noopener">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-1.707l2.108 1.218a1 1 0 010 1.564l-2.108 1.218-2.533-2.533 2.533-2.467zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
+                        Google Play
+                    </a>
+                    <a href="https://apps.apple.com/us/app/%D8%AA%D8%AD%D8%AF%D9%8A-%D8%A7%D9%84%D8%B9%D9%82%D9%88%D9%84-%D8%A7%D9%84%D8%B9%D8%A8-%D9%85%D8%B9-%D8%A7%D9%84%D8%A7%D8%B5%D8%AF%D9%82%D8%A7%D8%A1/id1197870807" class="store-btn btn-apple" target="_blank" rel="noopener">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        App Store
+                    </a>
+                </div>
+            </div>
+
         </div>
-    </footer>
-    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&#8593;</button>
-    <script src="/js/main.js"></script>
+
+        <div class="campaign-footer">
+            <img src="/images/logo_zytoona.png" alt="زيتونة">
+            <p>العاب زيتونة &copy; 2025</p>
+        </div>
+    </div>
 </body>
 </html>

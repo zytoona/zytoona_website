@@ -468,28 +468,7 @@ body.ltr .legal-content ul { padding-right: 0; padding-left: 24px; }
 .campaign-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 10px; }
 .campaign-card .store-links { display: flex; justify-content: center; gap: 8px; }
 
-/* ============ WORDSCRUSH LANDING ============ */
-.wc-hero {
-  min-height: 100vh; display: flex; align-items: center;
-  padding: 100px 20px 60px; position: relative; overflow: hidden;
-  background: linear-gradient(180deg, #fff8e8 0%, var(--bg) 60%);
-}
-.wc-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; position: relative; z-index: 1; }
-.wc-hero-content h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 900; line-height: 1.3; margin-bottom: 12px; }
-.wc-hero-content p { color: var(--text-soft); font-size: 1rem; margin-bottom: 24px; line-height: 1.7; }
-.wc-hero-image { text-align: center; }
-.wc-hero-image img { max-width: 240px; margin: 0 auto; border-radius: 36px; box-shadow: 0 20px 60px rgba(229,148,0,0.2); }
-.wc-modes { list-style: none; padding: 0; margin: 18px 0; }
-.wc-modes li {
-  display: flex; align-items: center; gap: 8px;
-  padding: 6px 0; color: var(--text-soft); font-size: 0.9rem;
-}
-.wc-modes li::before { content: '✓'; color: var(--green); font-weight: 800; }
-
-@media (max-width: 768px) {
-  .wc-hero-grid { grid-template-columns: 1fr; text-align: center; }
-  .wc-hero-image { order: -1; }
-}
+/* WordsCrush page styles are inline in wordscrush/index.html */
 
 /* ============ ANIMATIONS ============ */
 @keyframes fadeInUp {
