@@ -332,7 +332,7 @@
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 14px;
-        text-align: left;
+        text-align: center;
       }
       .app-identity-point {
         padding: 20px;
@@ -354,14 +354,26 @@
       }
       .app-identity-support {
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 8px 18px;
+        gap: 9px;
         margin-top: 22px;
         color: rgba(255, 255, 255, 0.72);
         font-size: 0.86rem;
         font-weight: 700;
+        text-align: center;
+      }
+      .app-identity-support-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        width: 100%;
+      }
+      .app-identity-publisher {
+        white-space: nowrap;
       }
       .app-identity-support a {
         color: #fbd56b;
@@ -555,6 +567,7 @@
         .app-identity-card { padding: 25px 18px; border-radius: 22px; }
         .app-identity-grid { grid-template-columns: 1fr; }
         .app-identity-point { padding: 17px; }
+        .app-identity-publisher { font-size: clamp(0.66rem, 3.3vw, 0.8rem); }
       }
     </style>
   <!-- Google AdSense Auto Ads -->
@@ -667,10 +680,12 @@
             </div>
           </div>
           <div class="app-identity-support">
-            <span>Developed and published by Zytoona Games</span>
-            <span>Support: <a href="mailto:zait@zytoona.com">zait@zytoona.com</a></span>
-            <a href="/privacy-policy-en/">Privacy Policy</a>
-            <a href="/data-deletion-wc/">Data Deletion</a>
+            <div class="app-identity-support-row app-identity-publisher"><span>Developed and published by Zytoona Games</span></div>
+            <div class="app-identity-support-row"><span>Support: <a href="mailto:zait@zytoona.com">zait@zytoona.com</a></span></div>
+            <nav class="app-identity-support-row" aria-label="Words Crush support links">
+              <a href="/privacy-policy-en/">Privacy Policy</a>
+              <a href="/data-deletion-wc/">Data Deletion</a>
+            </nav>
           </div>
         </div>
       </section>
