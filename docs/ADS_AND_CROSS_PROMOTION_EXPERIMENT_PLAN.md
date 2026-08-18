@@ -1,12 +1,27 @@
 # Zytoona Website Ads and Cross-Promotion Experiment Plan
 
-**Status:** Trial implementation launched by director instruction on 2026-08-18. This document
-records the experiment and rollback design; it does not independently authorize later changes.
+**Status:** The AdSense format-reduction trial remains active. The Words Crush cross-promotion
+experiment was retired on 2026-08-19. Historical sections are retained for audit only and do not
+describe current behavior or authorize restoring it.
 
 **Prepared:** 2026-08-18
 
 **Measurement window:** 30 complete days per approved experiment, followed by the applicable
 AdSense and store-reporting settlement delay before the final readout.
+
+## 0.1 Production cleanup — 2026-08-19
+
+- The Words Crush cross-promotion variant was retired because the current English portfolio has no
+  additional English game to promote. `/wordscrush/` and `/wordscrusheng/` now show the same clean
+  English product page without Arabic-game cross-promotion cards.
+- The former experiment script and markup were removed. Stage B was retired before completing the
+  planned 30-day window and must not be interpreted as a completed experiment.
+- Both Words Crush routes retain explicit, non-personal GA4 measurement for store-CTA impressions,
+  primary store clicks, gameplay-video clicks, and key content-section views. Every event records
+  the actual route in `source_page`, so the legacy and dedicated English URLs remain separable.
+- The Arabic privacy-policy promotion retains its device-aware impression and click events and now
+  uses a smaller centered card treatment.
+- The AdSense format-reduction experiment and its separate revenue decision remain unaffected.
 
 ## 0. Launch record — 2026-08-18
 
@@ -22,7 +37,7 @@ AdSense and store-reporting settlement delay before the final readout.
   layout while retaining its Uncrossed-specific legal copy and deletion link.
 - `/` uses two controlled responsive horizontal display units: one after the featured game and one after the
   game grid. Auto Ads cannot insert extra units above those content boundaries.
-- `/campaign/` uses one 320×100 display unit at the bottom and no Auto Ads placements.
+- `/campaign/` uses one responsive horizontal display unit at the bottom and no Auto Ads placements.
 - The experiment was restarted after the two new exclusions were applied. The replacement 50/50
   Auto Ads experiment is running with intent-driven formats and all overlay
   formats disabled in the variation, in-page formats unchanged, and auto-apply disabled.
@@ -121,7 +136,7 @@ experience without an unacceptable revenue loss?
 - disable intent-driven formats;
 - disable anchor, vignette, and side-rail overlay formats;
 - retain in-page Auto Ads for this stage;
-- retain the saved three-page exclusion baseline in both experiment arms; and
+- retain the saved five-route exclusion baseline in both experiment arms; and
 - disable automatic winner selection.
 
 Run this through AdSense's own Auto Ads experiment split if the live account confirms that the
@@ -137,7 +152,11 @@ Git.
 available AdSense experiment confidence/result, plus a visual review of the variation on named
 mobile and desktop routes. Do not let AdSense apply a winner automatically.
 
-### Stage B — 50/50 Words Crush cross-promotion experiment
+### Stage B — RETIRED: 50/50 Words Crush cross-promotion experiment (historical design)
+
+**Retired on 2026-08-19. Nothing in this section describes current production behavior or serves
+as an instruction to restore the experiment.** The design below is retained only to explain the
+removed implementation and the metrics that had been planned.
 
 **Question:** Do premium cross-promotion cards generate store interest without materially reducing
 clicks on the Words Crush primary download actions?
@@ -213,7 +232,24 @@ intent-driven. "Native" means calm integration into page spacing, not disguise.
 Stage D starts only after Stage A establishes a campaign-page baseline under the chosen Auto Ads
 formats. Do not change page exclusions and placement type at the same time.
 
-## 4. Cross-promotion analytics
+## 4. Current Words Crush production analytics
+
+The two English Words Crush routes currently record only non-personal website engagement signals:
+
+- `store_cta_impression` after a store-button group remains meaningfully visible;
+- `primary_store_click` when a visitor selects an App Store or Google Play button;
+- `gameplay_video_click` when a visitor requests the gameplay-video embed; and
+- `content_section_view` when a bounded heading sentinel for a key section remains visible.
+
+All four events include `source_page`, `source_game`, and `page_version`. Store events also include
+the placement and store where applicable. These events measure website exposure and outbound
+interest only. They are not downloads or installs; store-attributed acquisition requires separate
+approved App Store/Google Play instrumentation and reporting.
+
+## 4A. RETIRED Stage B cross-promotion analytics (historical design)
+
+**Historical only. The events and variant rules below are not emitted by the current Words Crush
+pages and must not be reinstated without a new director decision.**
 
 Keep the existing GA4 page measurement. Confirm Enhanced Measurement outbound clicks are enabled,
 then add explicit events because generic outbound-click data cannot reliably identify creative,
@@ -293,17 +329,17 @@ Official references:
 
 ## 5. Pre-registered decision thresholds
 
-The experiment is not launch-ready until every `TBD` below is replaced from the 90-day variance
-analysis and explicit director judgment.
+Any non-retired experiment is not decision-ready until its applicable `TBD` values below are
+replaced from the 90-day variance analysis and explicit director judgment.
 
 | Decision input | Pre-launch value |
 |---|---|
 | Maximum monthly ILS the director will forgo for brand quality | **TBD — director** |
 | Stage A minimum detectable revenue/RPM effect | **TBD — analyst from 90-day series** |
 | Stage A maximum acceptable revenue/RPM reduction | **TBD — director** |
-| Stage B minimum sample/exposure required per variant | **TBD — analyst** |
-| Stage B minimum cross-promotion CTR worth retaining | **TBD — director after sample analysis** |
-| Maximum acceptable relative decrease in primary Words Crush store-click rate | **TBD — director** |
+| Stage B minimum sample/exposure required per variant | **RETIRED — no current threshold** |
+| Stage B minimum cross-promotion CTR worth retaining | **RETIRED — no current threshold** |
+| Maximum acceptable relative decrease in primary Words Crush store-click rate | **RETIRED — no current threshold** |
 | Day-7 technical/safety abort actions | Hard triggers in Section 7 |
 | Store-attribution minimum count and consequence of an `Unknown` result | **TBD — store owner/director** |
 
@@ -320,7 +356,9 @@ silently.
 - page-level and country/device effects where reportable; and
 - named mobile/desktop visual observations.
 
-### Stage B
+### Stage B — RETIRED historical scorecard
+
+This planned scorecard is retained for audit only; no current production report should use it.
 
 - exposure count by variant;
 - card impressions and GA4 users/sessions with a cross-promotion click;

@@ -52,21 +52,51 @@
   storeLink.setAttribute('aria-label', 'حمّل ' + game.name + ' مجاناً');
 
   if ('IntersectionObserver' in window) {
+    var dwellTimer = null;
+    var impressionSent = false;
+
+    function clearDwellTimer() {
+      if (!dwellTimer) return;
+      window.clearTimeout(dwellTimer);
+      dwellTimer = null;
+    }
+
+    function sendImpression() {
+      dwellTimer = null;
+      if (impressionSent || document.visibilityState !== 'visible') return;
+      impressionSent = true;
+      observer.disconnect();
+      if (typeof window.gtag !== 'function') return;
+      window.gtag('event', 'cross_promo_impression', {
+        source_page: window.location.pathname,
+        source_game: 'zytoona_website',
+        placement_id: placementId,
+        creative_version: creativeVersion,
+        target_game: game.id,
+        store: storeName
+      });
+    }
+
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (!entry.isIntersecting || entry.intersectionRatio < 0.5) return;
-        observer.disconnect();
-        if (typeof window.gtag !== 'function') return;
-        window.gtag('event', 'cross_promo_impression', {
-          source_page: window.location.pathname,
-          source_game: 'zytoona_website',
-          placement_id: placementId,
-          creative_version: creativeVersion,
-          target_game: game.id,
-          store: storeName
-        });
+        if (impressionSent) return;
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.5 && document.visibilityState === 'visible') {
+          if (!dwellTimer) dwellTimer = window.setTimeout(sendImpression, 1000);
+          return;
+        }
+        clearDwellTimer();
       });
     }, { threshold: [0.5] });
     observer.observe(promo);
+
+    document.addEventListener('visibilitychange', function () {
+      if (impressionSent) return;
+      if (document.visibilityState !== 'visible') {
+        clearDwellTimer();
+        return;
+      }
+      observer.unobserve(promo);
+      observer.observe(promo);
+    });
   }
 })();

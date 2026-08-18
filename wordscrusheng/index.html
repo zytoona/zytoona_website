@@ -301,92 +301,6 @@
       }
       .ss-card img { width: 100%; display: block; }
 
-      /* ========== ZYTOONA CROSS-PROMOTION EXPERIMENT ========== */
-      .cross-promo[hidden] { display: none !important; }
-      .cross-promo {
-        padding: 52px 28px 34px;
-        text-align: center;
-      }
-      .cross-promo-heading {
-        max-width: 620px;
-        margin: 0 auto 28px;
-      }
-      .cross-promo-kicker {
-        color: #fbbf24;
-        font-size: 0.78rem;
-        font-weight: 800;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-      }
-      .cross-promo-heading h2 {
-        margin-top: 8px;
-        font-size: clamp(1.45rem, 3vw, 2rem);
-        font-weight: 900;
-        text-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      }
-      .cross-promo-heading p {
-        margin-top: 10px;
-        color: rgba(255,255,255,0.72);
-        font-size: 0.95rem;
-        line-height: 1.6;
-      }
-      .cross-promo-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 16px;
-        max-width: 860px;
-        margin: 0 auto;
-      }
-      .cross-promo-card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-height: 100%;
-        padding: 24px 18px 20px;
-        border: 1px solid rgba(255,255,255,0.12);
-        border-radius: 22px;
-        background: linear-gradient(160deg, rgba(18,49,83,0.96), rgba(7,25,47,0.96));
-        box-shadow: 0 18px 42px rgba(0,0,0,0.25);
-      }
-      .cross-promo-card img {
-        width: 92px;
-        height: 92px;
-        border-radius: 22px;
-        object-fit: cover;
-        box-shadow: 0 12px 28px rgba(0,0,0,0.3);
-      }
-      .cross-promo-card h3 {
-        margin-top: 16px;
-        font-size: 1.03rem;
-        font-weight: 800;
-      }
-      .cross-promo-card p {
-        flex: 1;
-        margin: 8px 0 18px;
-        color: rgba(255,255,255,0.68);
-        font-size: 0.82rem;
-        line-height: 1.55;
-      }
-      .cross-promo-action {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 44px;
-        width: 100%;
-        padding: 10px 16px;
-        border-radius: 12px;
-        background: #f5a623;
-        color: #10263f;
-        font-size: 0.84rem;
-        font-weight: 900;
-        transition: transform 0.2s ease, background 0.2s ease;
-      }
-      .cross-promo-action:hover,
-      .cross-promo-action:focus-visible {
-        background: #ffc04f;
-        transform: translateY(-2px);
-      }
-
       /* ========== FINAL CTA ========== */
       .final-cta {
         position: relative;
@@ -568,28 +482,6 @@
         .final-cta .cta-icon-wrap { width: 220px; }
         .final-cta .cta-icon { border-radius: 44px; }
         .ss-card { flex: 0 0 200px; }
-        .cross-promo { padding: 42px 18px 24px; }
-        .cross-promo-grid { grid-template-columns: 1fr; gap: 14px; }
-        .cross-promo-card {
-          display: grid;
-          grid-template-columns: 72px minmax(0, 1fr);
-          grid-template-areas:
-            "icon title"
-            "icon copy"
-            "action action";
-          column-gap: 16px;
-          text-align: left;
-          padding: 18px;
-        }
-        .cross-promo-card img {
-          grid-area: icon;
-          width: 72px;
-          height: 72px;
-          border-radius: 18px;
-        }
-        .cross-promo-card h3 { grid-area: title; margin: 4px 0 0; }
-        .cross-promo-card p { grid-area: copy; margin: 4px 0 14px; }
-        .cross-promo-action { grid-area: action; margin-top: 4px; }
       }
     </style>
   <!-- Google AdSense Auto Ads -->
@@ -617,7 +509,7 @@
       <!-- Map + Video in one image. YouTube positioned over the white box. -->
       <div class="map-video-wrap" data-parallax-map>
         <div class="map-depth-layer" data-parallax-layer>
-          <h1 class="hero-tagline">BUILD WORDS, BUILD YOUR BRAIN</h1>
+          <h1 class="hero-tagline" data-engagement-section="map_video">BUILD WORDS, BUILD YOUR BRAIN</h1>
           <picture>
             <source srcset="/images/wordscrush/video_part.webp" type="image/webp">
             <img src="/images/wordscrush/video_part.png" alt="Words Crush world map" width="980" height="1558">
@@ -651,7 +543,7 @@
   <div class="gold-section">
     <div class="page-col">
       <div class="modes-area">
-        <h2 class="reveal">Enjoy 6 game modes!</h2>
+        <h2 class="reveal" data-engagement-section="game_modes">Enjoy 6 game modes!</h2>
         <div class="modes-screenshot-frame reveal-scale">
           <picture>
             <source srcset="/images/wordscrush/ss_iphone_6_modes_v2.webp" type="image/webp">
@@ -676,7 +568,7 @@
 
       <!-- Screenshots carousel -->
       <div class="screenshots-area reveal">
-        <h2>Explore <span>Every Mode</span></h2>
+        <h2 data-engagement-section="mode_gallery">Explore <span>Every Mode</span></h2>
         <div class="ss-scroll">
           <div class="ss-card"><span class="ss-card-label">World Map</span><div class="ss-card-img"><picture><source srcset="/images/wordscrush/ss_ipx_map_v2.webp" type="image/webp"><img src="/images/wordscrush/ss_ipx_map_v2.png" alt="World Map" loading="lazy" width="1284" height="2778"></picture></div></div>
           <div class="ss-card"><span class="ss-card-label">Crossword</span><div class="ss-card-img"><picture><source srcset="/images/wordscrush/ss_ipx_crossword_v2.webp" type="image/webp"><img src="/images/wordscrush/ss_ipx_crossword_v2.png" alt="Crossword" loading="lazy" width="1284" height="2778"></picture></div></div>
@@ -687,42 +579,13 @@
         </div>
       </div>
 
-      <!-- 50/50 experiment: hidden by default; JS reveals this only for the variant. -->
-      <section class="cross-promo" id="crossPromoExperiment" aria-labelledby="crossPromoTitle" hidden>
-        <div class="cross-promo-heading">
-          <span class="cross-promo-kicker">From Zytoona Games</span>
-          <h2 id="crossPromoTitle">More word games to explore</h2>
-          <p>Keep the challenge going with another handcrafted puzzle from our studio.</p>
-        </div>
-        <div class="cross-promo-grid">
-          <article class="cross-promo-card" data-target-game="lost_word_2" data-card-position="1" aria-labelledby="crossPromoLostWordTitle">
-            <img src="/images/icon_lostword.png" alt="" width="120" height="120" loading="lazy">
-            <h3 id="crossPromoLostWordTitle">Lost Word 2</h3>
-            <p>Find hidden answers through word and picture clues in this Arabic-language puzzle.</p>
-            <a class="cross-promo-action" href="https://play.google.com/store/apps/details?id=com.zytoona.lostword2&amp;referrer=utm_source%3Dzytoona_site%26utm_medium%3Dcross_promo%26utm_campaign%3Dwc_more_games_v1%26utm_content%3Dlost_word_2" data-android-url="https://play.google.com/store/apps/details?id=com.zytoona.lostword2&amp;referrer=utm_source%3Dzytoona_site%26utm_medium%3Dcross_promo%26utm_campaign%3Dwc_more_games_v1%26utm_content%3Dlost_word_2" data-ios-url="https://apps.apple.com/app/id1063063902" aria-label="View Lost Word 2 on Google Play" target="_blank" rel="noopener">View on Google Play</a>
-          </article>
-          <article class="cross-promo-card" data-target-game="uncrossed" data-card-position="2" aria-labelledby="crossPromoUncrossedTitle">
-            <img src="/images/icon_uncrossed.png" alt="" width="120" height="120" loading="lazy">
-            <h3 id="crossPromoUncrossedTitle">Uncrossed</h3>
-            <p>Build connected answers in a fresh Arabic-language take on crossword puzzles.</p>
-            <a class="cross-promo-action" href="https://play.google.com/store/apps/details?id=com.zytoona.uncrossed&amp;referrer=utm_source%3Dzytoona_site%26utm_medium%3Dcross_promo%26utm_campaign%3Dwc_more_games_v1%26utm_content%3Duncrossed" data-android-url="https://play.google.com/store/apps/details?id=com.zytoona.uncrossed&amp;referrer=utm_source%3Dzytoona_site%26utm_medium%3Dcross_promo%26utm_campaign%3Dwc_more_games_v1%26utm_content%3Duncrossed" data-ios-url="https://apps.apple.com/app/id6477771169" aria-label="View Uncrossed on Google Play" target="_blank" rel="noopener">View on Google Play</a>
-          </article>
-          <article class="cross-promo-card" data-target-game="rashfa" data-card-position="3" aria-labelledby="crossPromoRashfaTitle">
-            <img src="/images/icon_rashfa.png" alt="" width="120" height="120" loading="lazy">
-            <h3 id="crossPromoRashfaTitle">Rashfa</h3>
-            <p>Test your vocabulary with rich Arabic crossword challenges.</p>
-            <a class="cross-promo-action" href="https://play.google.com/store/apps/details?id=com.zytoona.rashfa&amp;referrer=utm_source%3Dzytoona_site%26utm_medium%3Dcross_promo%26utm_campaign%3Dwc_more_games_v1%26utm_content%3Drashfa" data-android-url="https://play.google.com/store/apps/details?id=com.zytoona.rashfa&amp;referrer=utm_source%3Dzytoona_site%26utm_medium%3Dcross_promo%26utm_campaign%3Dwc_more_games_v1%26utm_content%3Drashfa" data-ios-url="https://apps.apple.com/app/id1050833737" aria-label="View Rashfa on Google Play" target="_blank" rel="noopener">View on Google Play</a>
-          </article>
-        </div>
-      </section>
-
       <!-- Final CTA -->
       <div class="final-cta">
         <picture class="cta-icon-wrap reveal-scale">
           <source srcset="/images/wordscrush/sharegame_icon_e.webp" type="image/webp">
           <img src="/images/wordscrush/sharegame_icon_e.png" alt="Words Crush" class="cta-icon" width="400" height="400">
         </picture>
-        <h2>Ready to Crush Some Words?</h2>
+        <h2 data-engagement-section="final_download">Ready to Crush Some Words?</h2>
         <p>Join millions of players worldwide.</p>
         <div class="badges">
           <a href="https://apps.apple.com/us/app/words-crush-word-puzzle-game/id1530922357" target="_blank" rel="noopener" data-primary-store="app_store" data-placement-id="wc_download_final">
@@ -756,7 +619,7 @@
   <!-- Logo renderer: layout data + portable renderer -->
   <script src="/js/logo-layout.js"></script>
   <script src="/js/portable-logo-renderer.js"></script>
-  <script src="/js/wordscrush-experiment.js?v=1"></script>
+  <script src="/js/wordscrush-analytics.js?v=1"></script>
   <script>
     // 1. Create the logo using the portable renderer — exact 917×705 stage, scaled to fit
     (function() {
