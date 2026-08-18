@@ -54,6 +54,8 @@
   if ('IntersectionObserver' in window) {
     var dwellTimer = null;
     var impressionSent = false;
+    var observationStarted = false;
+    var revealDelay = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 2000;
 
     function clearDwellTimer() {
       if (!dwellTimer) return;
@@ -87,10 +89,17 @@
         clearDwellTimer();
       });
     }, { threshold: [0.5] });
-    observer.observe(promo);
+
+    function startObservation() {
+      if (observationStarted || impressionSent) return;
+      observationStarted = true;
+      observer.observe(promo);
+    }
+
+    window.setTimeout(startObservation, revealDelay);
 
     document.addEventListener('visibilitychange', function () {
-      if (impressionSent) return;
+      if (impressionSent || !observationStarted) return;
       if (document.visibilityState !== 'visible') {
         clearDwellTimer();
         return;
