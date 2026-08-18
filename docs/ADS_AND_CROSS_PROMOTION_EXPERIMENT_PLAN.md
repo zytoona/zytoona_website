@@ -21,7 +21,23 @@ AdSense and store-reporting settlement delay before the final readout.
   the actual route in `source_page`, so the legacy and dedicated English URLs remain separable.
 - The Arabic privacy-policy promotion retains its device-aware impression and click events and now
   uses a smaller centered card treatment.
-- The AdSense format-reduction experiment and its separate revenue decision remain unaffected.
+- The AdSense format-reduction experiment and its separate revenue decision remain active. Its
+  comparison clock was reset later that day when the two Words Crush routes were added to the
+  production Auto Ads exclusions.
+
+## 0.2 Words Crush Auto Ads correction — 2026-08-19
+
+- The live Auto Ads control settings were still eligible on `/wordscrush/` and
+  `/wordscrusheng/`, allowing side rails, anchors, and in-page Auto Ads to overwhelm the product
+  presentation. This was unrelated to the earlier parallax rollback.
+- Exact-page exclusions were added for both Words Crush routes. The saved production exclusion
+  count is now seven; no manual ad unit was added to either Words Crush page.
+- Because AdSense locks page exclusions while an experiment is running, the prior experiment was
+  ended with the original retained, the two exclusions were applied, and the same 50/50 variation
+  was recreated as `Zytoona reduced ads trial - Words pages excluded - 2026-08-19`.
+- The replacement variation disables intent-driven formats and all three overlay formats, retains
+  the existing in-page selection, and keeps auto-apply disabled. The comparison clock restarted
+  on 2026-08-19; the manual 30-day decision date is 2026-09-18.
 
 ## 0. Launch record — 2026-08-18
 
@@ -136,7 +152,7 @@ experience without an unacceptable revenue loss?
 - disable intent-driven formats;
 - disable anchor, vignette, and side-rail overlay formats;
 - retain in-page Auto Ads for this stage;
-- retain the saved five-route exclusion baseline in both experiment arms; and
+- retain the saved seven-route exclusion baseline in both experiment arms; and
 - disable automatic winner selection.
 
 Run this through AdSense's own Auto Ads experiment split if the live account confirms that the
