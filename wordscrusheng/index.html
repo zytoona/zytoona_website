@@ -82,13 +82,12 @@
       }
       .zytoona-tag img { width: 90px; }
       .hero-headings {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
+        position: relative;
         z-index: 3;
+        max-width: 920px;
+        margin: 0 auto;
         text-align: center;
-        padding: 6px 20px;
+        padding: 4px 20px 12px;
         line-height: 1.15;
       }
       .hero-app-title {
@@ -104,12 +103,51 @@
         letter-spacing: 0.06em;
         text-shadow: 0 2px 6px rgba(0,0,0,0.7), 0 4px 16px rgba(0,0,0,0.4);
       }
+      .hero-oauth-card {
+        position: relative;
+        z-index: 3;
+        max-width: 820px;
+        margin: 4px auto 24px;
+        padding: 20px 26px;
+        border: 1px solid rgba(251, 191, 36, 0.5);
+        border-radius: 20px;
+        background: linear-gradient(135deg, rgba(7, 31, 61, 0.94), rgba(16, 67, 101, 0.9));
+        box-shadow: 0 14px 34px rgba(2, 12, 28, 0.3);
+        text-align: center;
+        line-height: 1.55;
+      }
+      .hero-oauth-card p {
+        max-width: 740px;
+        margin: 0 auto;
+        color: rgba(255, 255, 255, 0.88);
+        font-size: clamp(0.88rem, 1.8vw, 1rem);
+        font-weight: 600;
+      }
+      .hero-oauth-card p + p { margin-top: 9px; }
+      .hero-oauth-card strong { color: #fbbf24; }
+      .hero-oauth-support {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 7px 18px;
+        margin-top: 14px;
+        padding-top: 13px;
+        border-top: 1px solid rgba(255, 255, 255, 0.14);
+        font-size: clamp(0.78rem, 1.6vw, 0.9rem);
+        font-weight: 700;
+      }
+      .hero-oauth-support a {
+        color: #fbd56b;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .hero-oauth-support a:hover { color: #fff0b8; }
 
       /* ========== MAP + VIDEO COMBO (video_part.png) ========== */
       .map-video-wrap {
         position: relative;
         line-height: 0;
-        margin-top: -14px;
+        margin-top: 0;
         z-index: 1;
       }
       .map-video-wrap > picture {
@@ -299,99 +337,6 @@
       }
       .ss-card img { width: 100%; display: block; }
 
-      /* ========== APP PURPOSE + GOOGLE SIGN-IN ========== */
-      .app-identity-area {
-        padding: 12px 24px 54px;
-      }
-      .app-identity-card {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 36px;
-        border: 1px solid rgba(251, 191, 36, 0.34);
-        border-radius: 28px;
-        background:
-          radial-gradient(circle at 85% 0%, rgba(52, 168, 224, 0.18), transparent 34%),
-          linear-gradient(145deg, rgba(8, 35, 67, 0.97), rgba(19, 67, 102, 0.96));
-        box-shadow: 0 22px 60px rgba(2, 12, 28, 0.38);
-        text-align: center;
-      }
-      .app-identity-eyebrow {
-        display: block;
-        margin-bottom: 8px;
-        color: #fbbf24;
-        font-size: 0.75rem;
-        font-weight: 900;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-      }
-      .app-identity-card h2 {
-        margin-bottom: 12px;
-        font-size: clamp(1.55rem, 3.8vw, 2.35rem);
-        font-weight: 900;
-        letter-spacing: -0.025em;
-      }
-      .app-identity-intro {
-        max-width: 650px;
-        margin: 0 auto 24px;
-        color: rgba(255, 255, 255, 0.82);
-        font-size: 1rem;
-        font-weight: 600;
-        line-height: 1.7;
-      }
-      .app-identity-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
-        text-align: center;
-      }
-      .app-identity-point {
-        padding: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.11);
-        border-radius: 18px;
-        background: rgba(255, 255, 255, 0.065);
-      }
-      .app-identity-point h3 {
-        margin-bottom: 8px;
-        color: #fbbf24;
-        font-size: 1rem;
-        font-weight: 900;
-      }
-      .app-identity-point p {
-        color: rgba(255, 255, 255, 0.75);
-        font-size: 0.88rem;
-        font-weight: 600;
-        line-height: 1.65;
-      }
-      .app-identity-support {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 9px;
-        margin-top: 22px;
-        color: rgba(255, 255, 255, 0.72);
-        font-size: 0.86rem;
-        font-weight: 700;
-        text-align: center;
-      }
-      .app-identity-support-row {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        gap: 18px;
-        width: 100%;
-      }
-      .app-identity-publisher {
-        white-space: nowrap;
-      }
-      .app-identity-support a {
-        color: #fbd56b;
-        text-decoration: underline;
-        text-underline-offset: 3px;
-      }
-      .app-identity-support a:hover { color: #fff0b8; }
-
       /* ========== FINAL CTA ========== */
       .final-cta {
         position: relative;
@@ -576,14 +521,12 @@
         .final-cta .cta-icon-wrap { width: 220px; }
         .final-cta .cta-icon { border-radius: 44px; }
         .ss-card { flex: 0 0 200px; }
-        .hero-headings { padding-inline: 10px; }
+        .hero-headings { padding: 2px 10px 10px; }
         .hero-app-title { font-size: clamp(1.12rem, 5vw, 1.35rem); }
         .hero-tagline { margin-top: 4px; font-size: clamp(0.78rem, 3.6vw, 0.95rem); }
-        .app-identity-area { padding: 8px 14px 42px; }
-        .app-identity-card { padding: 25px 18px; border-radius: 22px; }
-        .app-identity-grid { grid-template-columns: 1fr; }
-        .app-identity-point { padding: 17px; }
-        .app-identity-publisher { font-size: clamp(0.66rem, 3.3vw, 0.8rem); }
+        .hero-oauth-card { margin: 2px 14px 18px; padding: 17px 15px; border-radius: 17px; }
+        .hero-oauth-card p { font-size: 0.82rem; line-height: 1.5; }
+        .hero-oauth-support { gap: 7px 12px; }
       }
       @media (prefers-reduced-motion: reduce) {
         .hero-app-title,
@@ -612,12 +555,25 @@
         <div class="logo-mount" id="logoMount"></div>
       </div>
 
+      <div class="hero-headings">
+        <h1 class="hero-app-title" data-engagement-section="map_video">Words Crush: Word Puzzle Game</h1>
+        <h2 class="hero-tagline">BUILD WORDS, BUILD YOUR BRAIN</h2>
+      </div>
+
+      <!-- OAuth reviewers and users see the app purpose and account use before media or downloads. -->
+      <section class="hero-oauth-card" aria-label="Words Crush purpose and Google Sign-In" data-engagement-section="app_identity">
+        <p><strong>App purpose:</strong> Words Crush is an English mobile word-puzzle game by Zytoona Games. Players connect letters, solve themed word challenges, explore a world map, and build vocabulary across six puzzle modes.</p>
+        <p><strong>Google Sign-In:</strong> Sign-In is optional. It authenticates your account and links your saved game progress to that account so you can restore progress on supported devices.</p>
+        <div class="hero-oauth-support" aria-label="Words Crush support and policy links">
+          <span>Support: <a href="mailto:zytoona.labs@gmail.com">zytoona.labs@gmail.com</a></span>
+          <span>Support: <a href="mailto:zait@zytoona.com">zait@zytoona.com</a></span>
+          <a href="/privacy-policy-en/">Privacy Policy</a>
+          <a href="/data-deletion-wc/">Data Deletion</a>
+        </div>
+      </section>
+
       <!-- Map + Video in one image. YouTube positioned over the white box. -->
       <div class="map-video-wrap">
-        <div class="hero-headings">
-          <h1 class="hero-app-title" data-engagement-section="map_video">Words Crush: Word Puzzle Game</h1>
-          <h2 class="hero-tagline">BUILD WORDS, BUILD YOUR BRAIN</h2>
-        </div>
         <picture>
           <source srcset="/images/wordscrush/video_part.webp" type="image/webp">
           <img src="/images/wordscrush/video_part.png" alt="Words Crush world map" width="980" height="1558">
@@ -703,33 +659,6 @@
           </a>
         </div>
       </div>
-
-      <!-- Visible product identity and OAuth purpose for users and Google verification. -->
-      <section class="app-identity-area" aria-labelledby="appIdentityTitle">
-        <div class="app-identity-card">
-          <span class="app-identity-eyebrow">About the game</span>
-          <h2 id="appIdentityTitle" data-engagement-section="app_identity">Words Crush: Word Puzzle Game</h2>
-          <p class="app-identity-intro">An English word puzzle game from Zytoona Games where players connect letters, solve themed word challenges, explore a world map, and build vocabulary across six puzzle modes.</p>
-          <div class="app-identity-grid">
-            <div class="app-identity-point">
-              <h3>Play, discover, and learn</h3>
-              <p>Words Crush combines word search, crossword, letter-mixing, and other puzzle styles in one progression-based mobile game.</p>
-            </div>
-            <div class="app-identity-point">
-              <h3>Google Sign-In and game progress</h3>
-              <p>Google Sign-In is optional. When selected, it authenticates your account and associates your saved game progress with that account, helping you restore progress on supported devices.</p>
-            </div>
-          </div>
-          <div class="app-identity-support">
-            <div class="app-identity-support-row app-identity-publisher"><span>Developed and published by Zytoona Games</span></div>
-            <div class="app-identity-support-row"><span>Support: <a href="mailto:zait@zytoona.com">zait@zytoona.com</a></span></div>
-            <nav class="app-identity-support-row" aria-label="Words Crush support links">
-              <a href="/privacy-policy-en/">Privacy Policy</a>
-              <a href="/data-deletion-wc/">Data Deletion</a>
-            </nav>
-          </div>
-        </div>
-      </section>
 
     </div>
 
