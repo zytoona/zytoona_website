@@ -98,23 +98,15 @@
       /* ========== MAP + VIDEO COMBO (video_part.png) ========== */
       .map-video-wrap {
         position: relative;
-        width: min(92%, 860px);
         line-height: 0;
-        margin: -14px auto 0;
+        margin-top: -14px;
         z-index: 1;
-        overflow: hidden;
       }
-      .map-depth-layer {
-        --map-parallax-y: 0px;
-        position: relative;
-        transform: translate3d(0, var(--map-parallax-y), 0);
-        will-change: transform;
-      }
-      .map-depth-layer > picture {
+      .map-video-wrap > picture {
         display: block;
         line-height: 0;
       }
-      .map-depth-layer > picture > img {
+      .map-video-wrap > picture > img {
         width: 100%;
         display: block;
       }
@@ -171,10 +163,6 @@
         border-width: 12px 0 12px 20px;
         border-color: transparent transparent transparent #fff;
         margin-left: 3px;
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .map-depth-layer { transform: none !important; }
       }
 
       /* ========== DOWNLOAD NOW ========== */
@@ -507,18 +495,16 @@
       </div>
 
       <!-- Map + Video in one image. YouTube positioned over the white box. -->
-      <div class="map-video-wrap" data-parallax-map>
-        <div class="map-depth-layer" data-parallax-layer>
-          <h1 class="hero-tagline" data-engagement-section="map_video">BUILD WORDS, BUILD YOUR BRAIN</h1>
-          <picture>
-            <source srcset="/images/wordscrush/video_part.webp" type="image/webp">
-            <img src="/images/wordscrush/video_part.png" alt="Words Crush world map" width="980" height="1558">
-          </picture>
-          <div class="video-in-map" id="videoEmbed">
-            <div class="video-thumb-wrap" id="videoThumb">
-              <img src="https://img.youtube.com/vi/RI_1UyS3StE/maxresdefault.jpg" alt="Words Crush gameplay video">
-              <div class="play-btn"></div>
-            </div>
+      <div class="map-video-wrap">
+        <h1 class="hero-tagline" data-engagement-section="map_video">BUILD WORDS, BUILD YOUR BRAIN</h1>
+        <picture>
+          <source srcset="/images/wordscrush/video_part.webp" type="image/webp">
+          <img src="/images/wordscrush/video_part.png" alt="Words Crush world map" width="980" height="1558">
+        </picture>
+        <div class="video-in-map" id="videoEmbed">
+          <div class="video-thumb-wrap" id="videoThumb">
+            <img src="https://img.youtube.com/vi/RI_1UyS3StE/maxresdefault.jpg" alt="Words Crush gameplay video">
+            <div class="play-btn"></div>
           </div>
         </div>
       </div>
@@ -703,35 +689,6 @@
         }
       });
 
-    })();
-
-    // Two-layer depth: the map/video assembly drifts gently over the blue tile world.
-    (function() {
-      var mapLayer = document.querySelector('[data-parallax-map]');
-      var movingLayer = document.querySelector('[data-parallax-layer]');
-      if (!mapLayer || !movingLayer || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-      var scheduled = false;
-      function updateMapParallax() {
-        scheduled = false;
-        var rect = mapLayer.getBoundingClientRect();
-        var viewportCenter = window.innerHeight / 2;
-        var layerCenter = rect.top + rect.height / 2;
-        var progress = (viewportCenter - layerCenter) / (window.innerHeight + rect.height);
-        var strength = window.innerWidth < 600 ? 30 : 54;
-        var offset = Math.max(-strength, Math.min(strength, progress * strength * 2));
-        movingLayer.style.setProperty('--map-parallax-y', offset.toFixed(2) + 'px');
-      }
-
-      function requestMapParallax() {
-        if (scheduled) return;
-        scheduled = true;
-        window.requestAnimationFrame(updateMapParallax);
-      }
-
-      requestMapParallax();
-      window.addEventListener('scroll', requestMapParallax, { passive: true });
-      window.addEventListener('resize', requestMapParallax);
     })();
 
     // Video click → YouTube embed

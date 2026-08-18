@@ -98,23 +98,15 @@
       /* ========== MAP + VIDEO COMBO (video_part.png) ========== */
       .map-video-wrap {
         position: relative;
-        width: min(92%, 860px);
         line-height: 0;
-        margin: -14px auto 0;
+        margin-top: -14px;
         z-index: 1;
-        overflow: hidden;
       }
-      .map-depth-layer {
-        --map-parallax-y: 0px;
-        position: relative;
-        transform: translate3d(0, var(--map-parallax-y), 0);
-        will-change: transform;
-      }
-      .map-depth-layer > picture {
+      .map-video-wrap > picture {
         display: block;
         line-height: 0;
       }
-      .map-depth-layer > picture > img {
+      .map-video-wrap > picture > img {
         width: 100%;
         display: block;
       }
@@ -171,10 +163,6 @@
         border-width: 12px 0 12px 20px;
         border-color: transparent transparent transparent #fff;
         margin-left: 3px;
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .map-depth-layer { transform: none !important; }
       }
 
       /* ========== DOWNLOAD NOW ========== */
@@ -300,6 +288,87 @@
         opacity: 0.8;
       }
       .ss-card img { width: 100%; display: block; }
+
+      /* ========== APP PURPOSE + GOOGLE SIGN-IN ========== */
+      .app-identity-area {
+        padding: 12px 24px 54px;
+      }
+      .app-identity-card {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 36px;
+        border: 1px solid rgba(251, 191, 36, 0.34);
+        border-radius: 28px;
+        background:
+          radial-gradient(circle at 85% 0%, rgba(52, 168, 224, 0.18), transparent 34%),
+          linear-gradient(145deg, rgba(8, 35, 67, 0.97), rgba(19, 67, 102, 0.96));
+        box-shadow: 0 22px 60px rgba(2, 12, 28, 0.38);
+        text-align: center;
+      }
+      .app-identity-eyebrow {
+        display: block;
+        margin-bottom: 8px;
+        color: #fbbf24;
+        font-size: 0.75rem;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .app-identity-card h2 {
+        margin-bottom: 12px;
+        font-size: clamp(1.55rem, 3.8vw, 2.35rem);
+        font-weight: 900;
+        letter-spacing: -0.025em;
+      }
+      .app-identity-intro {
+        max-width: 650px;
+        margin: 0 auto 24px;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1.7;
+      }
+      .app-identity-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        text-align: left;
+      }
+      .app-identity-point {
+        padding: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.11);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.065);
+      }
+      .app-identity-point h3 {
+        margin-bottom: 8px;
+        color: #fbbf24;
+        font-size: 1rem;
+        font-weight: 900;
+      }
+      .app-identity-point p {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 0.88rem;
+        font-weight: 600;
+        line-height: 1.65;
+      }
+      .app-identity-support {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 8px 18px;
+        margin-top: 22px;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 0.86rem;
+        font-weight: 700;
+      }
+      .app-identity-support a {
+        color: #fbd56b;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .app-identity-support a:hover { color: #fff0b8; }
 
       /* ========== FINAL CTA ========== */
       .final-cta {
@@ -482,6 +551,10 @@
         .final-cta .cta-icon-wrap { width: 220px; }
         .final-cta .cta-icon { border-radius: 44px; }
         .ss-card { flex: 0 0 200px; }
+        .app-identity-area { padding: 8px 14px 42px; }
+        .app-identity-card { padding: 25px 18px; border-radius: 22px; }
+        .app-identity-grid { grid-template-columns: 1fr; }
+        .app-identity-point { padding: 17px; }
       }
     </style>
   <!-- Google AdSense Auto Ads -->
@@ -507,18 +580,16 @@
       </div>
 
       <!-- Map + Video in one image. YouTube positioned over the white box. -->
-      <div class="map-video-wrap" data-parallax-map>
-        <div class="map-depth-layer" data-parallax-layer>
-          <h1 class="hero-tagline" data-engagement-section="map_video">BUILD WORDS, BUILD YOUR BRAIN</h1>
-          <picture>
-            <source srcset="/images/wordscrush/video_part.webp" type="image/webp">
-            <img src="/images/wordscrush/video_part.png" alt="Words Crush world map" width="980" height="1558">
-          </picture>
-          <div class="video-in-map" id="videoEmbed">
-            <div class="video-thumb-wrap" id="videoThumb">
-              <img src="https://img.youtube.com/vi/RI_1UyS3StE/maxresdefault.jpg" alt="Words Crush gameplay video">
-              <div class="play-btn"></div>
-            </div>
+      <div class="map-video-wrap">
+        <h1 class="hero-tagline" data-engagement-section="map_video">BUILD WORDS, BUILD YOUR BRAIN</h1>
+        <picture>
+          <source srcset="/images/wordscrush/video_part.webp" type="image/webp">
+          <img src="/images/wordscrush/video_part.png" alt="Words Crush world map" width="980" height="1558">
+        </picture>
+        <div class="video-in-map" id="videoEmbed">
+          <div class="video-thumb-wrap" id="videoThumb">
+            <img src="https://img.youtube.com/vi/RI_1UyS3StE/maxresdefault.jpg" alt="Words Crush gameplay video">
+            <div class="play-btn"></div>
           </div>
         </div>
       </div>
@@ -578,6 +649,31 @@
           <div class="ss-card"><span class="ss-card-label">Proverbs</span><div class="ss-card-img"><picture><source srcset="/images/wordscrush/ss_ipx_proverb_v2.webp" type="image/webp"><img src="/images/wordscrush/ss_ipx_proverb_v2.png" alt="Proverbs" loading="lazy" width="1284" height="2778"></picture></div></div>
         </div>
       </div>
+
+      <!-- Visible product identity and OAuth purpose for users and Google verification. -->
+      <section class="app-identity-area" aria-labelledby="appIdentityTitle">
+        <div class="app-identity-card">
+          <span class="app-identity-eyebrow">About the game</span>
+          <h2 id="appIdentityTitle" data-engagement-section="app_identity">Words Crush: Word Puzzle Game</h2>
+          <p class="app-identity-intro">An English word puzzle game from Zytoona Games where players connect letters, solve themed word challenges, explore a world map, and build vocabulary across six puzzle modes.</p>
+          <div class="app-identity-grid">
+            <div class="app-identity-point">
+              <h3>Play, discover, and learn</h3>
+              <p>Words Crush combines word search, crossword, letter-mixing, and other puzzle styles in one progression-based mobile game.</p>
+            </div>
+            <div class="app-identity-point">
+              <h3>Google Sign-In and game progress</h3>
+              <p>Google Sign-In is optional. When selected, it authenticates your account and associates your saved game progress with that account, helping you restore progress on supported devices.</p>
+            </div>
+          </div>
+          <div class="app-identity-support">
+            <span>Developed and published by Zytoona Games</span>
+            <span>Support: <a href="mailto:zait@zytoona.com">zait@zytoona.com</a></span>
+            <a href="/privacy-policy-en/">Privacy Policy</a>
+            <a href="/data-deletion-wc/">Data Deletion</a>
+          </div>
+        </div>
+      </section>
 
       <!-- Final CTA -->
       <div class="final-cta">
@@ -703,35 +799,6 @@
         }
       });
 
-    })();
-
-    // Two-layer depth: the map/video assembly drifts gently over the blue tile world.
-    (function() {
-      var mapLayer = document.querySelector('[data-parallax-map]');
-      var movingLayer = document.querySelector('[data-parallax-layer]');
-      if (!mapLayer || !movingLayer || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-      var scheduled = false;
-      function updateMapParallax() {
-        scheduled = false;
-        var rect = mapLayer.getBoundingClientRect();
-        var viewportCenter = window.innerHeight / 2;
-        var layerCenter = rect.top + rect.height / 2;
-        var progress = (viewportCenter - layerCenter) / (window.innerHeight + rect.height);
-        var strength = window.innerWidth < 600 ? 30 : 54;
-        var offset = Math.max(-strength, Math.min(strength, progress * strength * 2));
-        movingLayer.style.setProperty('--map-parallax-y', offset.toFixed(2) + 'px');
-      }
-
-      function requestMapParallax() {
-        if (scheduled) return;
-        scheduled = true;
-        window.requestAnimationFrame(updateMapParallax);
-      }
-
-      requestMapParallax();
-      window.addEventListener('scroll', requestMapParallax, { passive: true });
-      window.addEventListener('resize', requestMapParallax);
     })();
 
     // Video click → YouTube embed
