@@ -12,14 +12,19 @@ AdSense and store-reporting settlement delay before the final readout.
 
 - The initial format-reduction experiment was stopped with zero recorded impressions so page
   exclusions could be configured.
-- Exact Auto Ads page exclusions now cover `/privacy-policy/`, `/privacy-policy-en/`, and
-  `/campaign/`. Manual ad units remain eligible on excluded pages.
-- `/privacy-policy/` uses one compact first-party Arabic-game promotion, one 320×100 inline
-  display unit, and one 320×100 display unit at the bottom.
-- `/privacy-policy-en/` contains no AdSense loader or ad unit and has one small first-party
-  Zytoona portfolio banner at the bottom.
+- Exact Auto Ads page exclusions now cover `/`, `/privacy-policy/`, `/privacy-policy-en/`,
+  `/privacy-policy-uc/`, and `/campaign/`. Manual ad units remain eligible on excluded pages.
+- `/privacy-policy/` uses one compact first-party Arabic-game promotion, one responsive horizontal
+  display unit inline, and one responsive horizontal display unit at the bottom.
+- `/privacy-policy-en/` uses one responsive horizontal third-party display unit at the bottom and no first-party
+  game promotion while the English portfolio has only one game.
+- `/privacy-policy-uc/` shares the compact Arabic rotating promotion and controlled two-unit ad
+  layout while retaining its Uncrossed-specific legal copy and deletion link.
+- `/` uses two controlled responsive horizontal display units: one after the featured game and one after the
+  game grid. Auto Ads cannot insert extra units above those content boundaries.
 - `/campaign/` uses one 320×100 display unit at the bottom and no Auto Ads placements.
-- A replacement 50/50 Auto Ads experiment is running with intent-driven formats and all overlay
+- The experiment was restarted after the two new exclusions were applied. The replacement 50/50
+  Auto Ads experiment is running with intent-driven formats and all overlay
   formats disabled in the variation, in-page formats unchanged, and auto-apply disabled.
 - The comparison clock restarted on 2026-08-18. The manual 30-day decision date is 2026-09-17.
 

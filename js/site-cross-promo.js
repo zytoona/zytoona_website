@@ -9,7 +9,7 @@
         source_page: window.location.pathname,
         source_game: 'zytoona_website',
         placement_id: link.dataset.placementId,
-        creative_version: 'v1',
+        creative_version: link.dataset.creativeVersion || 'v1',
         target_game: link.dataset.targetGame,
         store: link.dataset.store,
         destination_type: link.dataset.store === 'website' ? 'portfolio_page' : 'cross_promo'

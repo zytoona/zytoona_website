@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +9,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <script>
+      try {
+        var savedCampaignTheme = localStorage.getItem('zytoona_campaign_theme');
+        if (savedCampaignTheme === 'dark' || savedCampaignTheme === 'light') {
+          document.documentElement.dataset.theme = savedCampaignTheme;
+        }
+      } catch (error) {}
+    </script>
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6QT3NP9PSZ"></script>
     <script>
@@ -19,12 +27,51 @@
     </script>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            color-scheme: light;
+            --page-bg: linear-gradient(135deg, #fff9ef 0%, #fff4dc 52%, #f5f8ed 100%);
+            --text: #2f3b2f;
+            --text-soft: #667066;
+            --text-muted: #8a9288;
+            --card: rgba(255,255,255,0.9);
+            --card-border: rgba(47,59,47,0.12);
+            --card-active: #fffaf0;
+            --rule: rgba(47,59,47,0.1);
+            --ad-bg: rgba(255,255,255,0.7);
+            --shadow: 0 8px 24px rgba(73, 58, 29, 0.08);
+            --apple-bg: #f0f1f2;
+            --apple-text: #31363b;
+            --apple-border: #d9dcdf;
+            --google-text: #25743d;
+            --badge-new-text: #245aa5;
+            --badge-star-text: #8a5a00;
+        }
+        :root[data-theme="dark"] {
+            color-scheme: dark;
+            --page-bg: linear-gradient(135deg, #0a1628 0%, #132042 50%, #0e1a35 100%);
+            --text: #f1f5f9;
+            --text-soft: #aebbd0;
+            --text-muted: #8391a6;
+            --card: rgba(255,255,255,0.06);
+            --card-border: rgba(255,255,255,0.08);
+            --card-active: rgba(255,255,255,0.1);
+            --rule: rgba(255,255,255,0.08);
+            --ad-bg: rgba(255,255,255,0.035);
+            --shadow: 0 8px 24px rgba(0,0,0,0.12);
+            --apple-bg: rgba(148, 163, 184, 0.1);
+            --apple-text: #dce3ec;
+            --apple-border: rgba(148, 163, 184, 0.2);
+            --google-text: #4ade80;
+            --badge-new-text: #60a5fa;
+            --badge-star-text: #fbbf24;
+        }
         body {
             font-family: 'Tajawal', sans-serif;
-            background: linear-gradient(135deg, #0a1628 0%, #132042 50%, #0e1a35 100%);
-            color: #e8edf5;
+            background: var(--page-bg);
+            color: var(--text);
             min-height: 100vh;
             padding: 24px 16px 40px;
+            transition: background 0.25s ease, color 0.25s ease;
         }
         .campaign-wrap {
             max-width: 540px;
@@ -33,8 +80,27 @@
 
         /* Header */
         .campaign-header {
+            position: relative;
             text-align: center;
             margin-bottom: 28px;
+        }
+        .theme-toggle {
+            position: absolute;
+            inset-inline-end: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            background: var(--card);
+            color: var(--text);
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .theme-toggle:focus-visible {
+            outline: 3px solid #e59400;
+            outline-offset: 3px;
         }
         .campaign-logo {
             width: 56px;
@@ -54,7 +120,7 @@
         }
         .campaign-subtitle {
             font-size: 0.95rem;
-            color: #94a3b8;
+            color: var(--text-soft);
         }
 
         /* Game list */
@@ -67,15 +133,16 @@
             display: flex;
             align-items: center;
             gap: 14px;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: var(--card);
+            border: 1px solid var(--card-border);
             border-radius: 16px;
             padding: 14px 16px;
             transition: background 0.2s, transform 0.2s;
+            box-shadow: var(--shadow);
         }
         .game-row:active {
             transform: scale(0.98);
-            background: rgba(255,255,255,0.1);
+            background: var(--card-active);
         }
         .game-icon {
             width: 56px;
@@ -92,11 +159,11 @@
             font-size: 1rem;
             font-weight: 700;
             margin-bottom: 2px;
-            color: #f1f5f9;
+            color: var(--text);
         }
         .game-desc {
             font-size: 0.78rem;
-            color: #94a3b8;
+            color: var(--text-soft);
             line-height: 1.3;
         }
         .game-meta {
@@ -104,12 +171,12 @@
             align-items: center;
             gap: 4px;
             font-size: 0.72rem;
-            color: #64748b;
+            color: var(--text-muted);
             margin-top: 4px;
             direction: ltr;
             justify-content: flex-end;
         }
-        .game-meta .sep { color: #475569; }
+        .game-meta .sep { color: var(--text-muted); }
 
         /* Store buttons */
         .store-btns {
@@ -135,13 +202,13 @@
         .store-btn svg { flex-shrink: 0; }
         .btn-gplay {
             background: rgba(52, 168, 83, 0.15);
-            color: #4ade80;
+            color: var(--google-text);
             border: 1px solid rgba(52, 168, 83, 0.25);
         }
         .btn-apple {
-            background: rgba(148, 163, 184, 0.1);
-            color: #cbd5e1;
-            border: 1px solid rgba(148, 163, 184, 0.15);
+            background: var(--apple-bg);
+            color: var(--apple-text);
+            border: 1px solid var(--apple-border);
         }
 
         /* Badge */
@@ -156,11 +223,11 @@
         }
         .badge-new {
             background: rgba(59, 130, 246, 0.2);
-            color: #60a5fa;
+            color: var(--badge-new-text);
         }
         .badge-star {
             background: rgba(251, 191, 36, 0.2);
-            color: #fbbf24;
+            color: var(--badge-star-text);
         }
 
         /* Footer note */
@@ -168,11 +235,11 @@
             text-align: center;
             margin-top: 32px;
             padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.06);
+            border-top: 1px solid var(--rule);
         }
         .campaign-footer p {
             font-size: 0.78rem;
-            color: #475569;
+            color: var(--text-muted);
         }
         .campaign-footer img {
             width: 28px;
@@ -186,15 +253,15 @@
             margin-top: 18px;
             padding: 7px;
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.08);
+            border: 1px solid var(--card-border);
             border-radius: 12px;
-            background: rgba(255,255,255,0.035);
+            background: var(--ad-bg);
             text-align: center;
         }
         .campaign-ad > span {
             display: block;
             margin-bottom: 3px;
-            color: #64748b;
+            color: var(--text-muted);
             font-size: 0.58rem;
             letter-spacing: 0.08em;
             text-transform: uppercase;
@@ -207,6 +274,7 @@
 <body>
     <div class="campaign-wrap">
         <div class="campaign-header">
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="تفعيل الوضع الداكن" title="تبديل المظهر">☾</button>
             <img src="/images/logo_zytoona.png" alt="زيتونة" class="campaign-logo">
             <h1>العاب زيتونة</h1>
             <p class="campaign-subtitle">حمّل جميع العابنا مجاناً</p>
@@ -364,11 +432,30 @@
         <aside class="campaign-ad" aria-label="Advertisement">
             <span>Advertisement</span>
             <ins class="adsbygoogle"
-                 style="display:inline-block;width:320px;height:100px;max-width:100%"
+                 style="display:block"
                  data-ad-client="ca-pub-2296352381124224"
-                 data-ad-slot="6192625369"></ins>
+                 data-ad-slot="6192625369"
+                 data-ad-format="horizontal"
+                 data-full-width-responsive="true"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </aside>
     </div>
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var button = document.getElementById('themeToggle');
+        function syncButton() {
+          var dark = root.dataset.theme === 'dark';
+          button.textContent = dark ? '☀' : '☾';
+          button.setAttribute('aria-label', dark ? 'تفعيل الوضع الفاتح' : 'تفعيل الوضع الداكن');
+        }
+        button.addEventListener('click', function () {
+          root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+          try { localStorage.setItem('zytoona_campaign_theme', root.dataset.theme); } catch (error) {}
+          syncButton();
+        });
+        syncButton();
+      })();
+    </script>
 </body>
 </html>
