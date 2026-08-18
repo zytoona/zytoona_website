@@ -55,7 +55,7 @@
     var dwellTimer = null;
     var impressionSent = false;
     var observationStarted = false;
-    var revealDelay = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 2000;
+    var revealDelay = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 800;
 
     function clearDwellTimer() {
       if (!dwellTimer) return;
