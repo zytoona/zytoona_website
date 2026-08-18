@@ -14,11 +14,11 @@ AdSense and store-reporting settlement delay before the final readout.
   exclusions could be configured.
 - Exact Auto Ads page exclusions now cover `/privacy-policy/`, `/privacy-policy-en/`, and
   `/campaign/`. Manual ad units remain eligible on excluded pages.
-- `/privacy-policy/` uses one compact first-party Arabic-game promotion, one responsive inline
-  display unit, and one responsive horizontal unit at the bottom.
+- `/privacy-policy/` uses one compact first-party Arabic-game promotion, one 320×100 inline
+  display unit, and one 320×100 display unit at the bottom.
 - `/privacy-policy-en/` contains no AdSense loader or ad unit and has one small first-party
   Zytoona portfolio banner at the bottom.
-- `/campaign/` uses one responsive horizontal unit at the bottom and no Auto Ads placements.
+- `/campaign/` uses one 320×100 display unit at the bottom and no Auto Ads placements.
 - A replacement 50/50 Auto Ads experiment is running with intent-driven formats and all overlay
   formats disabled in the variation, in-page formats unchanged, and auto-apply disabled.
 - The comparison clock restarted on 2026-08-18. The manual 30-day decision date is 2026-09-17.
