@@ -103,11 +103,12 @@
             outline-offset: 3px;
         }
         .campaign-logo {
-            width: 56px;
-            height: 56px;
-            border-radius: 14px;
-            margin-bottom: 14px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            width: 98px;
+            height: auto;
+            margin: 0 auto 10px;
+            border-radius: 0;
+            object-fit: contain;
+            filter: drop-shadow(0 5px 12px rgba(0,0,0,0.2));
         }
         .campaign-header h1 {
             font-size: 1.4rem;
@@ -265,6 +266,11 @@
             font-size: 0.58rem;
             letter-spacing: 0.08em;
             text-transform: uppercase;
+        }
+        .campaign-ad .adsbygoogle {
+            width: 100% !important;
+            min-width: 0 !important;
+            max-width: 100% !important;
         }
     </style>
   <!-- Google AdSense Auto Ads -->

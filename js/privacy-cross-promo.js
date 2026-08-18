@@ -18,16 +18,16 @@
     (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   var store = isIOS ? 'ios' : 'android';
   var eligibleGames = games.filter(function (game) { return Boolean(game[store]); });
-  var storageKey = 'zytoona_privacy_ar_game_' + store;
-  var selectedId = '';
+  var storageKey = 'zytoona_privacy_ar_previous_game_' + store;
+  var previousId = '';
 
-  try { selectedId = window.sessionStorage.getItem(storageKey) || ''; } catch (error) {}
+  try { previousId = window.localStorage.getItem(storageKey) || ''; } catch (error) {}
 
-  var game = eligibleGames.find(function (candidate) { return candidate.id === selectedId; });
-  if (!game) {
-    game = eligibleGames[Math.floor(Math.random() * eligibleGames.length)];
-    try { window.sessionStorage.setItem(storageKey, game.id); } catch (error) {}
-  }
+  // Exclude the previous selection so a normal refresh always presents a new game.
+  var candidates = eligibleGames.filter(function (candidate) { return candidate.id !== previousId; });
+  if (!candidates.length) candidates = eligibleGames;
+  var game = candidates[Math.floor(Math.random() * candidates.length)];
+  try { window.localStorage.setItem(storageKey, game.id); } catch (error) {}
 
   var storeLink = promo.querySelector('[data-promo-store]');
   var iconLink = promo.querySelector('[data-promo-icon-link]');

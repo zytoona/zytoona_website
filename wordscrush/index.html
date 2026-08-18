@@ -97,10 +97,13 @@
 
       /* ========== MAP + VIDEO COMBO (video_part.png) ========== */
       .map-video-wrap {
+        --map-parallax-y: 0px;
         position: relative;
         line-height: 0;
         margin-top: -14px;
         z-index: 1;
+        transform: translate3d(0, var(--map-parallax-y), 0);
+        will-change: transform;
       }
       .map-video-wrap > picture {
         display: block;
@@ -163,6 +166,10 @@
         border-width: 12px 0 12px 20px;
         border-color: transparent transparent transparent #fff;
         margin-left: 3px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .map-video-wrap { transform: none !important; }
       }
 
       /* ========== DOWNLOAD NOW ========== */
@@ -603,7 +610,7 @@
       </div>
 
       <!-- Map + Video in one image. YouTube positioned over the white box. -->
-      <div class="map-video-wrap">
+      <div class="map-video-wrap" data-parallax-map>
         <h1 class="hero-tagline">BUILD WORDS, BUILD YOUR BRAIN</h1>
         <picture>
           <source srcset="/images/wordscrush/video_part.webp" type="image/webp">
@@ -826,6 +833,34 @@
         }
       });
 
+    })();
+
+    // Two-layer depth: the map/video assembly drifts gently over the blue tile world.
+    (function() {
+      var mapLayer = document.querySelector('[data-parallax-map]');
+      if (!mapLayer || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var scheduled = false;
+      function updateMapParallax() {
+        scheduled = false;
+        var rect = mapLayer.getBoundingClientRect();
+        var viewportCenter = window.innerHeight / 2;
+        var layerCenter = rect.top + rect.height / 2;
+        var progress = (viewportCenter - layerCenter) / (window.innerHeight + rect.height);
+        var strength = window.innerWidth < 600 ? 18 : 34;
+        var offset = Math.max(-strength, Math.min(strength, progress * strength * 2));
+        mapLayer.style.setProperty('--map-parallax-y', offset.toFixed(2) + 'px');
+      }
+
+      function requestMapParallax() {
+        if (scheduled) return;
+        scheduled = true;
+        window.requestAnimationFrame(updateMapParallax);
+      }
+
+      requestMapParallax();
+      window.addEventListener('scroll', requestMapParallax, { passive: true });
+      window.addEventListener('resize', requestMapParallax);
     })();
 
     // Video click → YouTube embed
