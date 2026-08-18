@@ -1,12 +1,27 @@
 # Zytoona Website Ads and Cross-Promotion Experiment Plan
 
-**Status:** Revised design proposal for director review. No implementation, AdSense change,
-analytics change, deployment, or publication is authorized by this document.
+**Status:** Trial implementation launched by director instruction on 2026-08-18. This document
+records the experiment and rollback design; it does not independently authorize later changes.
 
 **Prepared:** 2026-08-18
 
 **Measurement window:** 30 complete days per approved experiment, followed by the applicable
 AdSense and store-reporting settlement delay before the final readout.
+
+## 0. Launch record — 2026-08-18
+
+- The initial format-reduction experiment was stopped with zero recorded impressions so page
+  exclusions could be configured.
+- Exact Auto Ads page exclusions now cover `/privacy-policy/`, `/privacy-policy-en/`, and
+  `/campaign/`. Manual ad units remain eligible on excluded pages.
+- `/privacy-policy/` uses one compact first-party Arabic-game promotion, one responsive inline
+  display unit, and one responsive horizontal unit at the bottom.
+- `/privacy-policy-en/` contains no AdSense loader or ad unit and has one small first-party
+  Zytoona portfolio banner at the bottom.
+- `/campaign/` uses one responsive horizontal unit at the bottom and no Auto Ads placements.
+- A replacement 50/50 Auto Ads experiment is running with intent-driven formats and all overlay
+  formats disabled in the variation, in-page formats unchanged, and auto-apply disabled.
+- The comparison clock restarted on 2026-08-18. The manual 30-day decision date is 2026-09-17.
 
 ## 1. Objective
 
@@ -101,7 +116,7 @@ experience without an unacceptable revenue loss?
 - disable intent-driven formats;
 - disable anchor, vignette, and side-rail overlay formats;
 - retain in-page Auto Ads for this stage;
-- retain the current page eligibility and zero exclusions; and
+- retain the saved three-page exclusion baseline in both experiment arms; and
 - disable automatic winner selection.
 
 Run this through AdSense's own Auto Ads experiment split if the live account confirms that the
@@ -418,4 +433,3 @@ Before implementation, the director must approve:
 4. numeric success, guardrail, sample, and `Unknown`-install rules; and
 5. named owners and authority for deploy/rollback, AdSense, GA4, Apple, Google Play, and any
    app-side Install Referrer work.
-
