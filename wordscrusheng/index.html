@@ -427,6 +427,32 @@
         font-weight: 600;
       }
 
+      /* ========== SINGLE BOTTOM AD ========== */
+      .wc-bottom-ad {
+        width: fit-content;
+        max-width: 100%;
+        min-height: 90px;
+        margin: 4px auto 26px;
+        padding: 7px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        border-radius: 14px;
+        background: rgba(7, 31, 61, 0.76);
+        text-align: center;
+      }
+      .wc-bottom-ad > span {
+        display: block;
+        margin-bottom: 3px;
+        color: rgba(255, 255, 255, 0.42);
+        font-size: 0.58rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .wc-bottom-slot { display: block; width: 320px; height: 100px; }
+      @media (min-width: 500px) { .wc-bottom-slot { width: 468px; height: 60px; } }
+      @media (min-width: 800px) { .wc-bottom-slot { width: 728px; height: 90px; } }
+      @media (max-width: 335px) { .wc-bottom-ad { display: none; } }
+
       /* ========== FOOTER ========== */
       .wc-footer {
         text-align: center;
@@ -561,6 +587,7 @@
         .hero-oauth-card { margin: 2px 14px 18px; padding: 17px 15px; border-radius: 17px; }
         .hero-oauth-card p { font-size: 0.82rem; line-height: 1.5; }
         .hero-oauth-support { gap: 7px 12px; }
+        .wc-bottom-ad { margin-bottom: 20px; }
       }
       @media (prefers-reduced-motion: reduce) {
         .hero-app-title,
@@ -569,7 +596,7 @@
         .ss-scroll { scroll-behavior: auto; }
       }
     </style>
-  <!-- Google AdSense Auto Ads -->
+  <!-- Google AdSense loader for the manual bottom unit; Auto Ads are excluded for this route. -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2296352381124224"
        crossorigin="anonymous"></script>
 </head>
@@ -689,6 +716,14 @@
           </div>
         </div>
       </section>
+
+      <aside class="wc-bottom-ad" aria-label="Advertisement">
+        <span>Advertisement</span>
+        <ins class="adsbygoogle wc-bottom-slot"
+             data-ad-client="ca-pub-2296352381124224"
+             data-ad-slot="1332849226"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </aside>
 
     </div>
 

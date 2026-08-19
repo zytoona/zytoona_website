@@ -31,13 +31,31 @@ AdSense and store-reporting settlement delay before the final readout.
   `/wordscrusheng/`, allowing side rails, anchors, and in-page Auto Ads to overwhelm the product
   presentation. This was unrelated to the earlier parallax rollback.
 - Exact-page exclusions were added for both Words Crush routes. The saved production exclusion
-  count is now seven; no manual ad unit was added to either Words Crush page.
+  count is now seven. At the time of the correction, no manual ad unit was present on either Words
+  Crush page.
 - Because AdSense locks page exclusions while an experiment is running, the prior experiment was
   ended with the original retained, the two exclusions were applied, and the same 50/50 variation
   was recreated as `Zytoona reduced ads trial - Words pages excluded - 2026-08-19`.
 - The replacement variation disables intent-driven formats and all three overlay formats, retains
   the existing in-page selection, and keeps auto-apply disabled. The comparison clock restarted
   on 2026-08-19; the manual 30-day decision date is 2026-09-18.
+
+## 0.3 Words Crush English minimal monetization — 2026-08-19
+
+- `/wordscrusheng/` retains its exact-page Auto Ads exclusion and adds one manual responsive
+  banner at the true bottom of the page content, immediately before the footer.
+- The unit is a normal in-page banner: it is not sticky, anchored, side-rail, interstitial, or an
+  Auto Ads placement. `/wordscrush/` remains unchanged and has no manual ad unit.
+- The existing responsive English bottom-unit slot is reused. Page-level revenue must therefore be
+  read by the `/wordscrusheng/` URL rather than attributed solely from the shared ad-unit name.
+- The approved exact-size responsive pattern constrains the placement to 320x100 on phones,
+  468x60 on intermediate widths, and 728x90 on desktop. It is hidden below 336 CSS pixels rather
+  than overflowing or allowing a square mobile creative.
+- No first-party click listener is attached to the advertisement. GA4 continues to measure product
+  engagement and store-CTA activity; AdSense remains the authority for ad impressions, clicks, and
+  revenue.
+- Revenue from this page has a new placement baseline beginning with this deployment and must not
+  be compared as though the prior ad-free period used the same placement inventory.
 
 ## 0. Launch record — 2026-08-18
 
