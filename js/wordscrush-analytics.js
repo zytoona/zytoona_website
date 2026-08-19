@@ -2,8 +2,8 @@
   'use strict';
 
   var SOURCE_PAGE = window.location.pathname;
-  var SOURCE_GAME = 'words_crush_eng';
-  var PAGE_VERSION = 'english_v1';
+  var SOURCE_GAME = document.body.dataset.sourceGame || 'words_crush_eng';
+  var PAGE_VERSION = document.body.dataset.pageVersion || 'english_v1';
 
   function sendEvent(name, parameters) {
     var payload = Object.assign({
@@ -97,7 +97,7 @@
     videoThumb.addEventListener('click', function () {
       sendEvent('gameplay_video_click', {
         placement_id: 'wc_gameplay_video',
-        video_id: 'RI_1UyS3StE'
+        video_id: videoThumb.dataset.videoId || 'RI_1UyS3StE'
       });
     }, { once: true });
   }
