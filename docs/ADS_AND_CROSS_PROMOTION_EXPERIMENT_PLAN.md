@@ -421,9 +421,9 @@ Do not assign a monetary value to an install until Zytoona approves a defensible
 
 1. Name owners for website source/review, Cloudflare deploy/rollback, AdSense, GA4, Apple campaign
    links, Google Play reporting, and each promoted game's product/store/compliance authority.
-2. For any source stage, resolve the canonical Cloudflare deployment path. Current tracked status
-   says the checked-in GitHub Actions path failed historically and the alternate manual path is not
-   accepted authority.
+2. For any source stage, use the canonical Cloudflare connected Workers Build path and verify its
+   commit check plus the intended public routes. The redundant failing GitHub Actions Pages path
+   was removed on 2026-08-19; the direct Wrangler command remains an unproven manual fallback.
 3. Capture the exact source commit and tree state, AdSense original/variation settings and
    screenshots, GA4 configuration, store links, policy/CMP state, and frozen baseline exports.
 4. Create a dedicated implementation branch/worktree and immutable baseline reference only after

@@ -29,9 +29,10 @@
 - **Main uncertainty:** the named publishing owner, authoritative Cloudflare project/deploy path,
   account/recovery custody, complete per-app compliance coverage, policy owner, and request-handling
   operations are Unknown.
-- **Main blocker:** the repository's public GitHub Actions deploy history contains 34 runs and all
-  34 failed, including the run at current `HEAD`; the source documents a conflicting manual
-  Workers/Pages path. Safe repeatable publishing and rollback are therefore not established.
+- **Deployment correction (2026-08-19):** Cloudflare's connected `Workers Builds: zytoona` check
+  was verified successful on multiple current commits. A redundant GitHub Actions Pages workflow
+  failed on every push because `CLOUDFLARE_API_TOKEN` was absent; that duplicate workflow was
+  removed so the connected Workers Build is the single automatic publishing path.
 - **Immediate actor:** see the portfolio registry. This status package does not authorize a
   website, DNS, console, or compliance change.
 
@@ -42,8 +43,8 @@
 | Source custody and authority | Implemented | Verified | Public canonical remote, default `main`, clean current checkout, upstream parity, 36 commits, and one historical brochure tag | Name maintainers and publishing/review ownership | Branch protection, account recovery, required reviewers | Git/source and public repository metadata |
 | Static site and local routes | Implemented | Verified | Eight tracked HTML entry pages, three JavaScript files, one stylesheet, 74 images, and Cloudflare route/header files; 142 checked local references resolve | Add a documented preview/validation gate appropriate to future changes | Browser/device/accessibility behavior | Source inventory; syntax/reference checks |
 | Public web delivery | Implemented | Verified | Root, `www`, policy, deletion, contact, campaign, Words Crush, advertising, association, and redirect checks responded publicly; eight selected critical file hashes matched source | Pin an accepted release/deployment identity and complete post-deploy probe | Whether every deployed asset equals one exact commit | Public HTTP checks, 2026-07-29 |
-| Automated deployment | Partial | Verified | Pushes to `main` invoke a Cloudflare Pages workflow, but all 34 visible runs failed; the latest failed at its deploy step after checkout | Repair or replace through a separately authorized deployment task, then prove success/rollback | Failure cause, secret/config state, project ownership | Workflow source and public Actions metadata |
-| Manual deployment/runbook | Partial | Verified | `SEO-NOTES.md` describes direct Wrangler deployment and reports a Workers/Pages project, but the command/project naming conflicts with the Pages workflow and `wrangler.toml` | Select one authoritative topology and reconcile the runbook | Which path produced the current live content | `SEO-NOTES.md`, workflow, `wrangler.toml` |
+| Automated deployment | Implemented | Verified | Pushes to `main` invoke Cloudflare's connected `Workers Builds: zytoona` integration; sampled current commits succeeded | Verify the exact check and public route after every authorized push; document rollback | Cloudflare account/recovery ownership and rollback custodian | GitHub commit checks and public Actions metadata, 2026-08-19 |
+| Manual deployment/runbook | Partial | Verified | `SEO-NOTES.md` describes direct Wrangler deployment, but that command has not been accepted or tested as the rollback path | Reconcile the runbook with the connected Workers Build and prove rollback | Recovery ownership and safe rollback command | `SEO-NOTES.md`, `wrangler.toml`, 2026-08-19 correction |
 | Domain and DNS | Partial | Verified / Reported | `zytoona.com` and `www.zytoona.com` are publicly served by Cloudflare; source records report a completed April 2026 migration and additional game/backend subdomains | Verify account owner, DNS export/recovery, redirect/canonical policy, and rollback | Registrar/zone custody and current non-web subdomain ownership | Public HTTP Verified; tracked operating notes Reported |
 | Privacy policies | Partial | Verified | Separate Words Crush/general and Uncrossed pages are live and match source; both say last updated April 2025 | Obtain legal/compliance review and define coverage for every promoted/current app | Policy owner, current accuracy, consent/disclosure sufficiency | Policy source/live hashes |
 | Data deletion and contact | Partial | Verified | Words Crush and Uncrossed deletion pages plus contact form post to a third-party relay and promise a 48-hour handling path | Prove delivery, mailbox ownership, identity verification, audit/retention, SLA, and failure handling; decide coverage for other apps | Current operational processing and legal adequacy | Source only; no form was submitted |
@@ -62,8 +63,8 @@ Implementation states and evidence confidence follow HQ `ops/VOCABULARY.md`. Mix
 |---|---|---|---|---|---|
 | Repository `main` | Canonical website source | Implemented | Verified | Current source authority; not by itself proof of publishing | Git identity and public repository metadata |
 | `zytoona.com` / `www.zytoona.com` | Public delivery | Implemented | Verified | Live for selected surfaces; exact full deployed revision remains Unknown | 2026-07-29 HTTP/hash probes |
-| GitHub Actions → Cloudflare Pages | Intended automatic publishing | Partial | Verified | Ineligible until a successful, reviewed run proves the accepted project/domain path | 34/34 public runs failed |
-| Direct Wrangler / Workers path | Documented alternate/manual publishing | Partial | Reported | Ineligible as authority until ownership, command, project, and rollback are reconciled | `SEO-NOTES.md`; not executed |
+| Cloudflare connected Workers Build | Automatic publishing | Implemented | Verified | Current automatic release path; sampled current commit checks succeeded | GitHub commit checks, 2026-08-19 |
+| Direct Wrangler / Workers path | Documented manual fallback | Partial | Reported | Ineligible as rollback authority until ownership, command, and recovery are reconciled | `SEO-NOTES.md`; not executed in this correction |
 
 ## Key evidence
 
@@ -101,11 +102,10 @@ Implementation states and evidence confidence follow HQ `ops/VOCABULARY.md`. Mix
      path.
    - Recommendation: name one accountable release owner plus at least one recovery custodian.
    - Decision owner: Aezaldeen.
-2. **Which deployment model is authoritative?**
-   - Options: repair the checked-in Pages workflow; adopt a reviewed direct Workers/static-assets
-     path; or replace both with another explicit controlled path.
-   - Recommendation: prefer one CI path pinned to the public domain/project, with preview,
-     post-deploy probes, and rollback; retire contradictory instructions only after proof.
+2. **How is the connected Workers Build rolled back safely?**
+   - The connected Cloudflare Workers Build is the single automatic deployment model.
+   - Recommendation: name the recovery custodian and prove one rollback plus post-deploy probe at
+     an exact commit before treating the release path as fully recoverable.
    - Decision owner: Aezaldeen / named publishing owner.
 3. **What is the intended app and compliance coverage?**
    - Questions: should Words Crush web links target the Arabic or English iOS product; should
@@ -118,16 +118,15 @@ Implementation states and evidence confidence follow HQ `ops/VOCABULARY.md`. Mix
 ## Next five status actions
 
 1. Obtain read-only owner/topology evidence for GitHub, Cloudflare, DNS, forms/mail, and ad files.
-2. Inspect the latest workflow failure securely and produce a bounded deployment-reliability
-   proposal without changing source or provider state.
+2. Document and test a bounded rollback procedure for the connected Cloudflare Workers Build path.
 3. Reconcile the seven promoted game records against current portfolio/store intent.
 4. Produce a privacy/deletion/app-association coverage matrix and human legal/compliance questions.
 5. Under separate authorization, prove one deployment/rollback/monitoring gate at an exact commit.
 
 ## Risks
 
-- Live bytes can currently match source while every automatic deploy fails, leaving a manual,
-  person-dependent, or undocumented release path.
+- Automatic publishing now has one verified connected build path, but rollback custody and a
+  tested recovery procedure remain undocumented.
 - A root `app-ads.txt` file does not prove that each store record points to the domain or that each
   ad console has accepted it.
 - Policies last dated April 2025 and two deletion forms may not cover the full promoted/current app

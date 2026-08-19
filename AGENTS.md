@@ -46,7 +46,8 @@ dated evidence or `PROJECT_STATUS.md`, not this stable file.
 - `ads.txt` / `app-ads.txt` — public seller declarations; existence is not per-app acceptance.
 - `.well-known/apple-app-site-association` — Apple associated-domain declaration.
 - `_redirects`, `_headers`, `robots.txt`, `sitemap.xml` — public routing/header/indexing contracts.
-- `.github/workflows/deploy.yml`, `wrangler.toml` — checked-in Cloudflare deployment configuration.
+- `wrangler.toml` — checked-in Cloudflare Workers deployment configuration. Pushes to `main` are
+  built and published by Cloudflare's connected Workers Build integration.
 - `SEO-NOTES.md` — detailed operating/history note; verify against current source and external
   state before relying on it.
 - `css/`, `js/`, `images/` — static presentation assets.
@@ -55,8 +56,8 @@ dated evidence or `PROJECT_STATUS.md`, not this stable file.
 
 | Purpose | Command/path | Documentation/verification caveat |
 |---|---|---|
-| Automatic deploy | Push to `main` invokes `.github/workflows/deploy.yml` | This is a state-changing release path. Public history was failing at the 2026-07-29 audit; do not trigger it without release authorization and a reviewed fix |
-| Manual deploy | `npx wrangler deploy` | Documented in `SEO-NOTES.md`, not accepted or rerun; it conflicts with the Pages workflow/project wording and may install/run tooling |
+| Automatic deploy | Push to `main` invokes Cloudflare's connected Workers Build | This is a state-changing release path. Verify the commit's `Workers Builds: zytoona` check and public route after every authorized push |
+| Manual deploy | `npx wrangler deploy` | Documented in `SEO-NOTES.md`, not accepted or rerun; treat it only as an unproven fallback until ownership and rollback are established |
 | Build | None documented | Static files are deployed directly; no package/lock file exists |
 | Test suite | None documented | Do not invent a green test claim |
 | JavaScript syntax | `node --check js/main.js` and the equivalent command for the other tracked JavaScript files | Read-only syntax evidence only; not browser/runtime proof |
