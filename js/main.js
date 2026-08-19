@@ -50,6 +50,7 @@ if (navToggle) {
     e.preventDefault();
     navToggle.classList.toggle('active');
     navLinks.classList.toggle('active');
+    navToggle.setAttribute('aria-expanded', navLinks.classList.contains('active') ? 'true' : 'false');
   });
 }
 
@@ -60,6 +61,7 @@ if (navLinks) {
     link.addEventListener('click', function () {
       navToggle.classList.remove('active');
       navLinks.classList.remove('active');
+      navToggle.setAttribute('aria-expanded', 'false');
     });
   });
 }

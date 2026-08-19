@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /data-deletion-wc/
-Disallow: /data-deletion-uc/
 
 Sitemap: https://zytoona.com/sitemap.xml

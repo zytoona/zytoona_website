@@ -2,44 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://zytoona.com/</loc>
-    <lastmod>2026-04-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-08-19</lastmod>
   </url>
   <url>
     <loc>https://zytoona.com/privacy-policy/</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-08-19</lastmod>
   </url>
   <url>
     <loc>https://zytoona.com/privacy-policy-en/</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-08-19</lastmod>
   </url>
   <url>
     <loc>https://zytoona.com/privacy-policy-uc/</loc>
-    <lastmod>2026-04-02</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
+    <lastmod>2026-08-19</lastmod>
   </url>
   <url>
     <loc>https://zytoona.com/contact/</loc>
-    <lastmod>2026-04-02</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
+    <lastmod>2026-06-12</lastmod>
   </url>
   <url>
     <loc>https://zytoona.com/wordscrush/</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2026-08-19</lastmod>
   </url>
   <url>
     <loc>https://zytoona.com/wordscrusheng/</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2026-08-19</lastmod>
   </url>
 </urlset>

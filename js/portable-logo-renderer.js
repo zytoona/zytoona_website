@@ -147,7 +147,7 @@
     reference.className = "wc-logo-reference";
     reference.alt = config.referenceAlt || "Reference logo overlay";
     reference.draggable = false;
-    reference.src = joinPath(basePath, layout.reference);
+    const referenceSrc = joinPath(basePath, layout.reference);
     reference.width = layout.width;
     reference.height = layout.height;
 
@@ -163,6 +163,10 @@
 
     let currentScale = initialScale;
     let referenceVisible = Boolean(config.referenceVisible);
+
+    if (referenceVisible) {
+      reference.src = referenceSrc;
+    }
 
     function sync() {
       setStageScale(shell, stage, layout, currentScale);
@@ -191,6 +195,9 @@
 
     function setReferenceVisible(visible) {
       referenceVisible = Boolean(visible);
+      if (referenceVisible && !reference.getAttribute("src")) {
+        reference.src = referenceSrc;
+      }
       sync();
     }
 
