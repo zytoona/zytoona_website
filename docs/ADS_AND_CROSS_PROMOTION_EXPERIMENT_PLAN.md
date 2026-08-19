@@ -40,17 +40,18 @@ AdSense and store-reporting settlement delay before the final readout.
   the existing in-page selection, and keeps auto-apply disabled. The comparison clock restarted
   on 2026-08-19; the manual 30-day decision date is 2026-09-18.
 
-## 0.3 Words Crush English minimal monetization — 2026-08-19
+## 0.3 Words Crush minimal monetization — 2026-08-19
 
-- `/wordscrusheng/` retains its exact-page Auto Ads exclusion and adds one manual responsive
-  banner at the true bottom of the page content, immediately before the footer.
+- `/wordscrusheng/` and `/wordscrush/` retain their exact-page Auto Ads exclusions and each use one
+  manual responsive banner at the true bottom of the page content, immediately before the footer.
 - The unit is a normal in-page banner: it is not sticky, anchored, side-rail, interstitial, or an
-  Auto Ads placement. `/wordscrush/` remains unchanged and has no manual ad unit.
-- The existing responsive English bottom-unit slot is reused. Page-level revenue must therefore be
-  read by the `/wordscrusheng/` URL rather than attributed solely from the shared ad-unit name.
-- The approved exact-size responsive pattern constrains the placement to 320x100 on phones,
-  468x60 on intermediate widths, and 728x90 on desktop. It is hidden below 336 CSS pixels rather
-  than overflowing or allowing a square mobile creative.
+  Auto Ads placement.
+- The existing bottom-unit slot is reused. Page-level revenue must therefore be read separately by
+  the `/wordscrusheng/` and `/wordscrush/` URLs rather than attributed solely from the shared
+  ad-unit name.
+- The English page retains its breakpoint-sized banner treatment. The Arabic page requests a
+  responsive horizontal format at full available width so it stays banner-shaped without
+  overflowing narrow phones.
 - No first-party click listener is attached to the advertisement. GA4 continues to measure product
   engagement and store-CTA activity; AdSense remains the authority for ad impressions, clicks, and
   revenue.
