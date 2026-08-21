@@ -17,7 +17,68 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css?v=7">
+    <link rel="stylesheet" href="/css/style.css?v=8">
+    <style>
+      /* Critical page UI stays local so an older cached shared stylesheet cannot break it. */
+      .confirmation-overlay[hidden] { display: none !important; }
+      .confirmation-overlay {
+        position: fixed !important;
+        inset: 0 !important;
+        z-index: 10000 !important;
+        display: grid !important;
+        place-items: center !important;
+        padding: 20px !important;
+        background: rgba(24, 32, 26, 0.62) !important;
+        backdrop-filter: blur(7px);
+        -webkit-backdrop-filter: blur(7px);
+        opacity: 0;
+        transition: opacity 180ms ease;
+      }
+      .confirmation-overlay.is-visible { opacity: 1; }
+      .confirmation-card {
+        width: min(100%, 430px) !important;
+        padding: 32px !important;
+        border: 1px solid rgba(47, 59, 47, 0.1) !important;
+        border-radius: 22px !important;
+        color: #2f3b2f !important;
+        background: #fff !important;
+        box-shadow: 0 28px 80px rgba(18, 25, 20, 0.34) !important;
+        text-align: center !important;
+        direction: ltr !important;
+        opacity: 0;
+        transform: translateY(14px) scale(0.97);
+        transition: opacity 180ms ease, transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .confirmation-overlay.is-visible .confirmation-card { opacity: 1; transform: none; }
+      .confirmation-icon {
+        display: grid !important;
+        place-items: center !important;
+        width: 52px !important;
+        height: 52px !important;
+        margin: 0 auto 16px !important;
+        border-radius: 50% !important;
+        color: #b92f35 !important;
+        background: #fff0f0 !important;
+        font-size: 1.55rem !important;
+        font-weight: 800 !important;
+      }
+      .confirmation-card h2 { margin: 0 0 10px !important; font-size: 1.45rem !important; }
+      .confirmation-card p { margin: 0 !important; color: #5d675d !important; line-height: 1.65 !important; }
+      .confirmation-actions { display: grid !important; grid-template-columns: 1fr 1.35fr !important; gap: 10px !important; margin-top: 24px !important; }
+      .confirmation-actions button {
+        min-height: 48px !important;
+        padding: 11px 14px !important;
+        border-radius: 11px !important;
+        font: 700 0.92rem/1.2 Inter, sans-serif !important;
+        cursor: pointer !important;
+      }
+      .confirmation-cancel { border: 1px solid rgba(47, 59, 47, 0.12) !important; color: #2f3b2f !important; background: #fff !important; }
+      .confirmation-delete { border: 0 !important; color: #fff !important; background: #b92f35 !important; }
+      @media (max-width: 520px) {
+        .confirmation-card { padding: 26px 20px !important; }
+        .confirmation-actions { grid-template-columns: 1fr !important; }
+      }
+    </style>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6QT3NP9PSZ"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
