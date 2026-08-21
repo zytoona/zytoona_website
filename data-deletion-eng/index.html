@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css?v=5">
+    <link rel="stylesheet" href="/css/style.css?v=6">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6QT3NP9PSZ"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -44,11 +44,11 @@
 
     <main class="deletion-page">
         <div class="container">
-            <section class="deletion-content" aria-labelledby="deletion-title">
+            <section class="deletion-content" dir="ltr" aria-labelledby="deletion-title">
                 <h1 id="deletion-title">Delete your Words Crush account and data</h1>
                 <p>Use this form to request deletion of your <strong>Words Crush: Word Puzzle Game</strong> account and the personal data associated with it. We may contact you to verify that the account belongs to you.</p>
 
-                <form class="deletion-form" id="deletionForm" action="https://formsubmit.co/zytoona.labs@gmail.com" method="POST">
+                <form class="deletion-form" id="deletionForm" dir="ltr" action="https://formsubmit.co/cf1902e5d6b61207a546378014089a62" method="POST">
                     <input type="hidden" name="_subject" value="Data deletion request - Words Crush English">
                     <input type="hidden" name="_next" value="https://zytoona.com/data-deletion-eng/?sent=1">
                     <input type="hidden" name="_captcha" value="true">
@@ -61,7 +61,7 @@
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" autocomplete="name" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">Request account deletion</button>
+                    <button type="submit" class="form-submit deletion-submit">Request account deletion</button>
                 </form>
 
                 <div class="deletion-note">
@@ -69,6 +69,16 @@
                     <p>This action cannot be undone. For help, email <a href="mailto:zytoona.labs@gmail.com">zytoona.labs@gmail.com</a>.</p>
                 </div>
             </section>
+
+            <dialog class="confirmation-dialog" id="deletionConfirm" aria-labelledby="confirmation-title">
+                <div class="confirmation-icon" aria-hidden="true">!</div>
+                <h2 id="confirmation-title">Are you sure?</h2>
+                <p>This will send a permanent account-deletion request. After verification and processing, the deleted account and game data cannot be recovered.</p>
+                <div class="confirmation-actions">
+                    <button type="button" class="confirmation-cancel" id="cancelDeletion">Cancel</button>
+                    <button type="button" class="confirmation-delete" id="confirmDeletion">Yes, request deletion</button>
+                </div>
+            </dialog>
 
         </div>
     </main>
@@ -88,12 +98,41 @@
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&#8593;</button>
     <script src="/js/main.js"></script>
     <script>
+      const deletionForm = document.getElementById('deletionForm');
+      const deletionConfirm = document.getElementById('deletionConfirm');
+      const confirmDeletion = document.getElementById('confirmDeletion');
+      const cancelDeletion = document.getElementById('cancelDeletion');
+      let deletionConfirmed = false;
+
+      deletionForm.addEventListener('submit', (event) => {
+        if (deletionConfirmed) return;
+        event.preventDefault();
+        if (!deletionForm.reportValidity()) return;
+        if (typeof deletionConfirm.showModal === 'function') {
+          deletionConfirm.showModal();
+        } else if (window.confirm('Are you sure you want to request permanent account deletion?')) {
+          deletionConfirmed = true;
+          deletionForm.requestSubmit();
+        }
+      });
+
+      confirmDeletion.addEventListener('click', () => {
+        deletionConfirmed = true;
+        deletionConfirm.close();
+        deletionForm.requestSubmit();
+      });
+
+      cancelDeletion.addEventListener('click', () => deletionConfirm.close());
+      deletionConfirm.addEventListener('click', (event) => {
+        if (event.target === deletionConfirm) deletionConfirm.close();
+      });
+
       if (window.location.search.includes('sent=1')) {
         const message = document.createElement('div');
         message.className = 'form-success';
         message.style.display = 'block';
         message.innerHTML = '<p>We received your request and will contact you if verification is needed.</p>';
-        document.getElementById('deletionForm').appendChild(message);
+        deletionForm.appendChild(message);
       }
     </script>
 </body>
