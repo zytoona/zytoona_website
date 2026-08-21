@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css?v=6">
+    <link rel="stylesheet" href="/css/style.css?v=7">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6QT3NP9PSZ"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -27,11 +27,10 @@
     </script>
 </head>
 <body class="ltr">
-    <nav class="navbar logo-visible" id="navbar">
+    <nav class="navbar logo-visible english-navbar" id="navbar" dir="ltr">
         <div class="container">
             <a href="/wordscrusheng/" class="nav-logo">
                 <img src="/images/logo_zytoona.png" alt="Zytoona Games" width="657" height="391" style="height:42px;border-radius:12px;">
-                <span>Zytoona Games</span>
             </a>
             <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
             <div class="nav-links" id="navLinks">
@@ -70,15 +69,17 @@
                 </div>
             </section>
 
-            <dialog class="confirmation-dialog" id="deletionConfirm" aria-labelledby="confirmation-title">
-                <div class="confirmation-icon" aria-hidden="true">!</div>
-                <h2 id="confirmation-title">Are you sure?</h2>
-                <p>This will send a permanent account-deletion request. After verification and processing, the deleted account and game data cannot be recovered.</p>
-                <div class="confirmation-actions">
-                    <button type="button" class="confirmation-cancel" id="cancelDeletion">Cancel</button>
-                    <button type="button" class="confirmation-delete" id="confirmDeletion">Yes, request deletion</button>
+            <div class="confirmation-overlay" id="deletionConfirm" hidden>
+                <div class="confirmation-card" role="dialog" aria-modal="true" aria-labelledby="confirmation-title" aria-describedby="confirmation-description">
+                    <div class="confirmation-icon" aria-hidden="true">!</div>
+                    <h2 id="confirmation-title">Are you sure?</h2>
+                    <p id="confirmation-description">This will send a permanent account-deletion request. After verification and processing, the deleted account and game data cannot be recovered.</p>
+                    <div class="confirmation-actions">
+                        <button type="button" class="confirmation-cancel" id="cancelDeletion">Cancel</button>
+                        <button type="button" class="confirmation-delete" id="confirmDeletion">Yes, request deletion</button>
+                    </div>
                 </div>
-            </dialog>
+            </div>
 
         </div>
     </main>
@@ -104,27 +105,43 @@
       const cancelDeletion = document.getElementById('cancelDeletion');
       let deletionConfirmed = false;
 
+      function openDeletionConfirmation() {
+        deletionConfirm.hidden = false;
+        document.body.classList.add('modal-open');
+        requestAnimationFrame(() => {
+          deletionConfirm.classList.add('is-visible');
+          cancelDeletion.focus();
+        });
+      }
+
+      function closeDeletionConfirmation() {
+        deletionConfirm.classList.remove('is-visible');
+        document.body.classList.remove('modal-open');
+        window.setTimeout(() => {
+          deletionConfirm.hidden = true;
+          deletionForm.querySelector('.deletion-submit').focus();
+        }, 180);
+      }
+
       deletionForm.addEventListener('submit', (event) => {
         if (deletionConfirmed) return;
         event.preventDefault();
         if (!deletionForm.reportValidity()) return;
-        if (typeof deletionConfirm.showModal === 'function') {
-          deletionConfirm.showModal();
-        } else if (window.confirm('Are you sure you want to request permanent account deletion?')) {
-          deletionConfirmed = true;
-          deletionForm.requestSubmit();
-        }
+        openDeletionConfirmation();
       });
 
       confirmDeletion.addEventListener('click', () => {
         deletionConfirmed = true;
-        deletionConfirm.close();
+        deletionConfirm.classList.remove('is-visible');
         deletionForm.requestSubmit();
       });
 
-      cancelDeletion.addEventListener('click', () => deletionConfirm.close());
+      cancelDeletion.addEventListener('click', closeDeletionConfirmation);
       deletionConfirm.addEventListener('click', (event) => {
-        if (event.target === deletionConfirm) deletionConfirm.close();
+        if (event.target === deletionConfirm) closeDeletionConfirmation();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !deletionConfirm.hidden) closeDeletionConfirmation();
       });
 
       if (window.location.search.includes('sent=1')) {
