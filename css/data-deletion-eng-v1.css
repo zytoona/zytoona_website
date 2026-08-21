@@ -82,6 +82,29 @@ body.ltr { direction: ltr; font-family: Inter, -apple-system, BlinkMacSystemFont
   text-align: left;
 }
 .deletion-note p { margin: 0 0 16px; color: #5d675d; line-height: 1.65; text-align: left; }
+.deletion-success {
+  padding: 12px 8px 4px;
+  direction: ltr;
+  text-align: center;
+}
+.deletion-success[hidden] { display: none !important; }
+.deletion-success-icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  color: #fff;
+  background: #2d8a50;
+  box-shadow: 0 10px 24px rgba(45, 138, 80, 0.22);
+  font-size: 1.75rem;
+  font-weight: 800;
+}
+.deletion-success h2 { margin: 0 0 10px; color: #2f3b2f; font-size: 1.65rem; line-height: 1.3; }
+.deletion-success p { margin: 0 auto; max-width: 440px; color: #5d675d; font-size: 1.02rem; line-height: 1.7; text-align: center; }
+.deletion-success .deletion-success-refresh { margin-top: 12px; color: #8a9189; font-size: 0.86rem; }
+.deletion-success + .deletion-note { margin-top: 30px; }
 
 .modal-open { overflow: hidden; }
 .confirmation-overlay[hidden] { display: none !important; }

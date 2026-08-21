@@ -46,7 +46,7 @@
         <div class="container">
             <section class="deletion-content" dir="ltr" aria-labelledby="deletion-title">
                 <h1 id="deletion-title">Delete your Words Crush account and data</h1>
-                <p>Use this form to request deletion of your <strong>Words Crush: Word Puzzle Game</strong> account and the personal data associated with it. We may contact you to verify that the account belongs to you.</p>
+                <p id="deletion-intro">Use this form to request deletion of your <strong>Words Crush: Word Puzzle Game</strong> account and the personal data associated with it. We may contact you to verify that the account belongs to you.</p>
 
                 <form class="deletion-form" id="deletionForm" dir="ltr" action="https://formsubmit.co/cf1902e5d6b61207a546378014089a62" method="POST">
                     <input type="hidden" name="_subject" value="Data deletion request - Words Crush English">
@@ -63,6 +63,13 @@
                     </div>
                     <button type="submit" class="form-submit deletion-submit">Request account deletion</button>
                 </form>
+
+                <section class="deletion-success" id="deletionSuccess" aria-labelledby="success-title" hidden>
+                    <div class="deletion-success-icon" aria-hidden="true">&#10003;</div>
+                    <h2 id="success-title">Request received</h2>
+                    <p>We received your request and will contact you if verification is needed.</p>
+                    <p class="deletion-success-refresh">Refresh this page if you need to submit another request.</p>
+                </section>
 
                 <div class="deletion-note">
                     <p><strong>What happens next:</strong> After verification, we will delete the account profile and game data associated with your account within 60 days. We may retain limited records when required for legal, fraud-prevention, or security purposes.</p>
@@ -146,11 +153,11 @@
       });
 
       if (window.location.search.includes('sent=1')) {
-        const message = document.createElement('div');
-        message.className = 'form-success';
-        message.style.display = 'block';
-        message.innerHTML = '<p>We received your request and will contact you if verification is needed.</p>';
-        deletionForm.appendChild(message);
+        document.getElementById('deletion-title').hidden = true;
+        document.getElementById('deletion-intro').hidden = true;
+        deletionForm.hidden = true;
+        document.getElementById('deletionSuccess').hidden = false;
+        window.history.replaceState({}, '', window.location.pathname);
       }
     </script>
 </body>
