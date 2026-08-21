@@ -374,6 +374,12 @@ section { padding: 40px 0; }
 }
 .footer-social-col a:hover { background: var(--primary); color: white; }
 .footer-social-col svg { width: 20px; height: 20px; }
+.footer-text-links {
+  display: flex; justify-content: center; flex-wrap: wrap;
+  gap: 10px 22px; margin-top: 12px;
+}
+.footer-text-links a { color: rgba(255,255,255,0.62); text-decoration: none; }
+.footer-text-links a:hover, .footer-text-links a:focus-visible { color: white; }
 
 @media (max-width: 768px) {
   .footer-grid { grid-template-columns: 1fr; }
@@ -699,7 +705,7 @@ body.ltr .legal-content ul { padding-right: 0; padding-left: 24px; }
 }
 .deletion-content h1 { font-size: 1.6rem; font-weight: 900; margin-bottom: 12px; }
 .deletion-content p { color: var(--text-soft); margin-bottom: 20px; line-height: 1.7; }
-.deletion-content .form-group { text-align: right; }
+.deletion-content .form-group { text-align: start; }
 
 /* ============ CAMPAIGN PAGE ============ */
 .campaign-section { padding: 100px 20px 60px; text-align: center; }

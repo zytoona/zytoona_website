@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Zytoona Games for Words Crush support, questions, and feedback.">
+    <meta name="author" content="Zytoona Games">
+    <meta property="og:title" content="Contact Zytoona Games">
+    <meta property="og:description" content="Contact Zytoona Games for Words Crush support, questions, and feedback.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Zytoona Games">
+    <meta property="og:url" content="https://zytoona.com/contact-en/">
+    <meta property="og:image" content="https://zytoona.com/images/logo_zytoona.png">
+    <link rel="canonical" href="https://zytoona.com/contact-en/">
+    <title>Contact Zytoona Games</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css?v=5">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6QT3NP9PSZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6QT3NP9PSZ');
+    </script>
+</head>
+<body class="ltr">
+    <nav class="navbar logo-visible" id="navbar">
+        <div class="container">
+            <a href="/wordscrusheng/" class="nav-logo">
+                <img src="/images/logo_zytoona.png" alt="Zytoona Games" width="657" height="391" style="height:42px;border-radius:12px;">
+                <span>Zytoona Games</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+            <div class="nav-links" id="navLinks">
+                <a href="/wordscrusheng/">Words Crush</a>
+                <a href="/privacy-policy-en/">Privacy Policy</a>
+                <a href="/contact-en/" aria-current="page">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <section class="contact-info" aria-labelledby="contact-title">
+                    <h1 id="contact-title">Contact Us</h1>
+                    <p>Need help with Words Crush, have a question, or want to share feedback? We would be happy to hear from you.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <h3>Player Support</h3>
+                            <a href="mailto:zytoona.labs@gmail.com">zytoona.labs@gmail.com</a>
+                            <p class="text-secondary">For technical support, account questions, and bug reports.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contactForm" action="https://formsubmit.co/zytoona.labs@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="New English website support message">
+                        <input type="hidden" name="_next" value="https://zytoona.com/contact-en/?sent=1">
+                        <input type="hidden" name="_captcha" value="true">
+                        <input type="text" name="_honey" autocomplete="off" tabindex="-1" style="display:none">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" autocomplete="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" autocomplete="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <span>&copy; 2026 Zytoona Games. All rights reserved.</span>
+                <nav class="footer-text-links" aria-label="English player links">
+                    <a href="/wordscrusheng/">Words Crush</a>
+                    <a href="/privacy-policy-en/">Privacy Policy</a>
+                    <a href="/data-deletion-eng/">Data Deletion</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&#8593;</button>
+    <script src="/js/main.js"></script>
+    <script>
+      if (window.location.search.includes('sent=1')) {
+        const message = document.createElement('div');
+        message.className = 'form-success';
+        message.style.display = 'block';
+        message.innerHTML = '<p>Thank you. Your message was sent successfully, and we will reply as soon as possible.</p>';
+        document.getElementById('contactForm').appendChild(message);
+      }
+    </script>
+</body>
+</html>
