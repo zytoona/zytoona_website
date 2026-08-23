@@ -58,6 +58,23 @@ AdSense and store-reporting settlement delay before the final readout.
 - Revenue from this page has a new placement baseline beginning with this deployment and must not
   be compared as though the prior ad-free period used the same placement inventory.
 
+## 0.4 Portfolio cross-promotion measurement — 2026-08-24
+
+- The homepage game-download actions, campaign catalog store buttons, and existing Arabic privacy
+  promotions emit the same `cross_promo_click` event with stable placement, creative, target-game,
+  store, route, and campaign fields. Homepage and campaign actions add one qualified impression per
+  placement-target-store-creative combination; privacy cards retain their existing whole-card
+  visibility rule and now include the same campaign identifier.
+- Google Play destinations include non-personal `utm_*` campaign values and an equivalent encoded
+  Play referrer. This supports Play Console traffic-source reporting now and gives target apps a
+  compatible payload if they later implement the Install Referrer API.
+- Apple destinations remain ordinary App Store links. App Store campaign attribution requires a
+  provider token and campaign links created by the responsible App Store Connect owner; the
+  website must not invent those values.
+- Website impressions and clicks are not installations. Android first-launch attribution still
+  requires separate per-game implementation and release work; Apple first-time-download
+  attribution still requires approved App Store campaign links and settled store reporting.
+
 ## 0. Launch record — 2026-08-18
 
 - The initial format-reduction experiment was stopped with zero recorded impressions so page

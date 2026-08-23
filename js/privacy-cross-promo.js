@@ -75,7 +75,8 @@
         placement_id: placementId,
         creative_version: creativeVersion,
         target_game: game.id,
-        store: storeName
+        store: storeName,
+        campaign_id: [placementId, game.id, storeName, creativeVersion].join('_')
       });
     }
 
