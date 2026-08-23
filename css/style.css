@@ -390,6 +390,42 @@ section { padding: 40px 0; }
 
 /* ============ LEGAL PAGES ============ */
 .legal-page { padding: 100px 20px 60px; background: var(--bg); }
+.smart-side-ad { display: none; }
+@media (min-width: 1280px) {
+  .legal-page {
+    display: grid;
+    grid-template-columns: minmax(0, 1000px) 178px;
+    align-items: start;
+    justify-content: center;
+    gap: 30px;
+  }
+  .legal-page > .container { width: 100%; min-width: 0; }
+  .smart-side-ad--legal {
+    display: block;
+    width: 178px;
+    min-height: 622px;
+    margin-top: 250px;
+    padding: 8px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    opacity: 0.72;
+    transform: translateY(6px);
+    transition: opacity 0.24s ease, transform 0.24s ease;
+  }
+  .smart-side-ad--legal.is-requested { opacity: 1; transform: none; }
+  .smart-side-ad--legal > span {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-muted);
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+}
 .legal-content {
   max-width: 800px; margin: 0 auto;
   background: var(--surface); border: 1px solid var(--line);

@@ -78,6 +78,9 @@
             max-width: 540px;
             margin: 0 auto;
         }
+        .campaign-layout {
+            min-width: 0;
+        }
 
         /* Header */
         .campaign-header {
@@ -273,13 +276,61 @@
             min-width: 0 !important;
             max-width: 100% !important;
         }
+        .smart-side-ad {
+            display: none;
+        }
+        @media (min-width: 1280px) {
+            .campaign-layout {
+                display: grid;
+                grid-template-columns: minmax(0, 540px) 178px;
+                align-items: start;
+                justify-content: center;
+                gap: 34px;
+                max-width: 790px;
+                margin: 0 auto;
+                direction: ltr;
+            }
+            .campaign-wrap {
+                width: 100%;
+                direction: rtl;
+            }
+            .smart-side-ad {
+                display: block;
+                width: 178px;
+                min-height: 622px;
+                margin-top: 154px;
+                padding: 8px;
+                overflow: hidden;
+                border: 1px solid var(--card-border);
+                border-radius: 16px;
+                background: var(--ad-bg);
+                box-shadow: var(--shadow);
+                text-align: center;
+                opacity: 0.72;
+                transform: translateY(6px);
+                transition: opacity 0.24s ease, transform 0.24s ease;
+            }
+            .smart-side-ad.is-requested {
+                opacity: 1;
+                transform: none;
+            }
+            .smart-side-ad > span {
+                display: block;
+                margin-bottom: 5px;
+                color: var(--text-muted);
+                font-size: 0.58rem;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+            }
+        }
     </style>
   <!-- Google AdSense Auto Ads -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2296352381124224"
        crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="campaign-wrap">
+    <div class="campaign-layout">
+      <div class="campaign-wrap">
         <div class="campaign-header">
             <button class="theme-toggle" id="themeToggle" type="button" aria-label="تفعيل الوضع الداكن" title="تبديل المظهر">☾</button>
             <img src="/images/logo_zytoona.png" alt="زيتونة" class="campaign-logo" width="657" height="391">
@@ -446,6 +497,14 @@
                  data-full-width-responsive="true"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </aside>
+      </div>
+      <aside class="smart-side-ad" data-smart-side-ad aria-label="إعلان">
+          <span>إعلان</span>
+          <ins class="adsbygoogle smart-side-ad-unit"
+               style="display:inline-block;width:160px;height:600px"
+               data-ad-client="ca-pub-2296352381124224"
+               data-ad-slot="1323350174"></ins>
+      </aside>
     </div>
     <script>
       (function () {
@@ -464,5 +523,6 @@
         syncButton();
       })();
     </script>
+    <script src="/js/smart-side-ad.js?v=1"></script>
 </body>
 </html>
